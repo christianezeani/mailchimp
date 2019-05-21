@@ -1,13 +1,21 @@
 {
-    "name": "christianezeani/mailchimp",
-    "description": "Mailchimp API wrapper",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Christian Ezeani",
-            "email": "christian.ezeani@gmail.com"
-        }
-    ],
-    "require": {}
+  "name": "christianezeani/mailchimp",
+  "description": "MailChimp API wrapper",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Ezeani",
+      "email": "christian.ezeani@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MailChimp": "src/MailChimp"
+    },
+    "files": []
+  }
 }
