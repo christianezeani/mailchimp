@@ -1,0 +1,49 @@
+<?php
+namespace MailChimp\Models;
+
+/**
+ * @property string $id Audience List ID
+ * @property string $name The name of the Audience list.
+ * @property \MailChimp\Data\Contact $contact Contact information displayed in campaign footers to comply with international spam laws.
+ * @property string $permission_reminder
+ * @property \MailChimp\Data\CampaignDefaults $campaign_defaults
+ * @property string $notify_on_subscribe
+ * @property string $notify_on_unsubscribe
+ * @property string $date_created
+ * @property int $list_rating
+ * @property bool $email_type_option
+ * @property string $subscribe_url_short
+ * @property string $subscribe_url_long
+ * @property string $beamer_address
+ * @property string $visibility
+ * @property array $modules
+ * @property \MailChimp\Data\Stats $stats
+ */
+class Audience extends Model {
+
+  /**
+   * @ignore
+   */
+  protected $fields = [
+    'id' => 'string',
+    'name' => 'string',
+    'contact' => MailChimp\Data\Contact::class,
+    'permission_reminder' => 'string',
+    'use_archive_bar' => 'bool',
+    'campaign_defaults' => MailChimp\Data\CampaignDefaults::class,
+    'notify_on_subscribe' => 'string',
+    'notify_on_unsubscribe' => 'string',
+    'date_created' => 'string',
+    'list_rating' => 'int',
+    'email_type_option' => 'bool',
+    'subscribe_url_short' => 'string',
+    'subscribe_url_long' => 'string',
+    'beamer_address' => 'string',
+    'visibility' => 'string',
+    'modules' => 'array',
+    'stats' => MailChimp\Data\Stats::class,
+    '_links' => 'array'
+  ];
+
+}
+

@@ -9,6 +9,11 @@
       "email": "christian.ezeani@gmail.com"
     }
   ],
+  "scripts": {
+    "post-install-cmd": [
+      "phpdoc -d ./src/MailChimp -t ./docs/api"
+    ]
+  },
   "require": {
     "php": ">=5.5.0"
   },

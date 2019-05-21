@@ -1,0 +1,66 @@
+<?php
+namespace MailChimp\Core;
+
+class Model extends Core {
+
+  /**
+   * Fields for the model
+   * 
+   * @var array $fields
+   */
+  protected $fields = [];
+
+  /**
+   * @var array $get - Fields for Get Requests
+   */
+  protected $get = [];
+
+  /**
+   * API Query builder
+   * 
+   * @var Builder
+   */
+  private $builder;
+
+  private $data;
+
+  function __construct($data=NULL) {
+    $this->builder = new Builder($this);
+    $this->data = new \stdClass;
+  }
+
+  /**
+   * Get Model Fields
+   * 
+   * @return array
+   */
+  function getFields() {
+    return $this->fields;
+  }
+  
+
+
+
+
+  public function __get($name) {
+    return $this->data->{$name};
+  }
+
+  public function __set($name, $value) {
+    $this->data->{$name} = $value;
+  }
+
+  public function __isset($name) {
+    return isset($this->data->{$name});
+  }
+
+  public function __unset($name) {
+    unset($this->data->{$name});
+  }
+
+  public function __call($name, $arguments) {
+    return $this->builder->{$name}(...$arguments);
+  }
+
+}
+
