@@ -1,0 +1,13 @@
+{
+    "name": "christianezeani/mailchimp",
+    "description": "Mailchimp API wrapper",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Ezeani",
+            "email": "christian.ezeani@gmail.com"
+        }
+    ],
+    "require": {}
+}
