@@ -67,12 +67,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">43</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">84</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
@@ -97,13 +97,17 @@
 
             <ul class="side-nav nav nav-list">
                 <li class="nav-header">Navigation</li>
-                                                                            <li><a href="#Core\Core.php"><i class="icon-file"></i> Core\Core.php</a></li>
+                                                                            <li><a href="#Data\Link.php"><i class="icon-file"></i> Data\Link.php</a></li>
+                                                                                                    <li><a href="#Core\Core.php"><i class="icon-file"></i> Core\Core.php</a></li>
                                                                                                     <li><a href="#Core\Builder.php"><i class="icon-file"></i> Core\Builder.php</a></li>
-                                                                                                    <li><a href="#Models\Audience.php"><i class="icon-file"></i> Models\Audience.php</a></li>
+                                                                                                    <li><a href="#Model\Audience.php"><i class="icon-file"></i> Model\Audience.php</a></li>
+                                                                                                    <li><a href="#Interfaces\ModelInterface.php"><i class="icon-file"></i> Interfaces\ModelInterface.php</a></li>
                                                                                                     <li><a href="#MailChimp.php"><i class="icon-file"></i> MailChimp.php</a></li>
                                                                                                     <li><a href="#Core\Model.php"><i class="icon-file"></i> Core\Model.php</a></li>
                                                                                                     <li><a href="#Data\Contact.php"><i class="icon-file"></i> Data\Contact.php</a></li>
+                                                                                                    <li><a href="#Config.php"><i class="icon-file"></i> Config.php</a></li>
                                                                                                     <li><a href="#Data\Stats.php"><i class="icon-file"></i> Data\Stats.php</a></li>
+                                                                                                    <li><a href="#Interfaces\MailChimpInterface.php"><i class="icon-file"></i> Interfaces\MailChimpInterface.php</a></li>
                                                                                                     <li><a href="#Core\Http.php"><i class="icon-file"></i> Core\Http.php</a></li>
                                                                                                     <li><a href="#Core\Data.php"><i class="icon-file"></i> Core\Data.php</a></li>
                                                                                                     <li><a href="#Data\CampaignDefaults.php"><i class="icon-file"></i> Data\CampaignDefaults.php</a></li>
@@ -117,6 +121,42 @@
             </ul>
 
             
+                            <div class="package-contents">
+                                            <a name="Data\Link.php" id="Data\Link.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Data\Link.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for class \MailChimp\Data\Link</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>16</td>
+                                        <td>No summary for property $fields</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
                             <div class="package-contents">
                                             <a name="Core\Core.php" id="Core\Core.php"></a>
                         <h3>
@@ -168,7 +208,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Core\Builder.php
-                            <small style="float: right;padding-right: 10px;">4</small>
+                            <small style="float: right;padding-right: 10px;">11</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -187,28 +227,63 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>4</td>
+                                        <td>6</td>
                                         <td>No summary for class \MailChimp\Core\Builder</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
+                                        <td>10</td>
                                         <td>Argument $model is missing from the Docblock of __construct</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
+                                        <td>10</td>
                                         <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method create()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for method update()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method delete()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>No summary for method get()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>No summary for method first()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>34</td>
+                                        <td>No summary for method clear()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>8</td>
+                                        <td>No summary for property $model</td>
                                     </tr>
                                                             </tbody>
                             </table>
                         </div>
                                     </div>
                             <div class="package-contents">
-                                            <a name="Models\Audience.php" id="Models\Audience.php"></a>
+                                            <a name="Model\Audience.php" id="Model\Audience.php"></a>
                         <h3>
                             <i class="icon-file"></i>
-                            Models\Audience.php
+                            Model\Audience.php
                             <small style="float: right;padding-right: 10px;">2</small>
                         </h3>
                         <div>
@@ -228,8 +303,44 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>22</td>
-                                        <td>No summary for class \MailChimp\Models\Audience</td>
+                                        <td>23</td>
+                                        <td>No summary for class \MailChimp\Model\Audience</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Interfaces\ModelInterface.php" id="Interfaces\ModelInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Interfaces\ModelInterface.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>5</td>
+                                        <td>No summary for interface \MailChimp\Interfaces\ModelInterface</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>33</td>
+                                        <td>Argument $method is missing from the Docblock of methodAllowed</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -240,7 +351,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             MailChimp.php
-                            <small style="float: right;padding-right: 10px;">2</small>
+                            <small style="float: right;padding-right: 10px;">6</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -259,8 +370,28 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
+                                        <td>7</td>
                                         <td>No summary for class \MailChimp\MailChimp</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>Argument $config is missing from the Docblock of __construct</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>11</td>
+                                        <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>15</td>
+                                        <td>No summary for method config()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>9</td>
+                                        <td>No summary for property $_config</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -271,7 +402,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Core\Model.php
-                            <small style="float: right;padding-right: 10px;">17</small>
+                            <small style="float: right;padding-right: 10px;">7</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -290,83 +421,33 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>4</td>
-                                        <td>No summary for class \MailChimp\Core\Model</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>27</td>
+                                        <td>45</td>
                                         <td>Argument $data is missing from the Docblock of __construct</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>27</td>
+                                        <td>45</td>
                                         <td>No summary for method __construct()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>45</td>
-                                        <td>Argument $name is missing from the Docblock of __get</td>
+                                        <td>77</td>
+                                        <td>No summary for method clear()</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>45</td>
-                                        <td>No summary for method __get()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>49</td>
-                                        <td>Argument $name is missing from the Docblock of __set</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>49</td>
-                                        <td>Argument $value is missing from the Docblock of __set</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>49</td>
-                                        <td>No summary for method __set()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>53</td>
-                                        <td>Argument $name is missing from the Docblock of __isset</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>53</td>
-                                        <td>No summary for method __isset()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>57</td>
-                                        <td>Argument $name is missing from the Docblock of __unset</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>57</td>
-                                        <td>No summary for method __unset()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>61</td>
+                                        <td>82</td>
                                         <td>Argument $name is missing from the Docblock of __call</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>61</td>
+                                        <td>82</td>
                                         <td>Argument $arguments is missing from the Docblock of __call</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>61</td>
+                                        <td>82</td>
                                         <td>No summary for method __call()</td>
-                                    </tr>
-                                                                    <tr>
-                                        <td>error</td>
-                                        <td>25</td>
-                                        <td>No summary for property $data</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -396,8 +477,44 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
+                                        <td>17</td>
                                         <td>No summary for class \MailChimp\Data\Contact</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Config.php" id="Config.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Config.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>4</td>
+                                        <td>No summary for class \MailChimp\Config</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>6</td>
+                                        <td>No summary for method __construct()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -408,6 +525,42 @@
                         <h3>
                             <i class="icon-file"></i>
                             Data\Stats.php
+                            <small style="float: right;padding-right: 10px;">3</small>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>24</td>
+                                        <td>No summary for class \MailChimp\Data\Stats</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>No summary for property $fields</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
+                            <div class="package-contents">
+                                            <a name="Interfaces\MailChimpInterface.php" id="Interfaces\MailChimpInterface.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Interfaces\MailChimpInterface.php
                             <small style="float: right;padding-right: 10px;">2</small>
                         </h3>
                         <div>
@@ -427,8 +580,8 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
-                                        <td>No summary for class \MailChimp\Data\Stats</td>
+                                        <td>5</td>
+                                        <td>No summary for interface \MailChimp\Interfaces\MailChimpInterface</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -439,7 +592,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Core\Http.php
-                            <small style="float: right;padding-right: 10px;">3</small>
+                            <small style="float: right;padding-right: 10px;">28</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -466,6 +619,131 @@
                                         <td>6</td>
                                         <td>No summary for method __construct()</td>
                                     </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>Argument $method is missing from the Docblock of request</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>Argument $path is missing from the Docblock of request</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>Argument $data is missing from the Docblock of request</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>Argument $headers is missing from the Docblock of request</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>10</td>
+                                        <td>No summary for method request()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $path is missing from the Docblock of get</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $data is missing from the Docblock of get</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>Argument $headers is missing from the Docblock of get</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>14</td>
+                                        <td>No summary for method get()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $path is missing from the Docblock of post</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $data is missing from the Docblock of post</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>Argument $headers is missing from the Docblock of post</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>18</td>
+                                        <td>No summary for method post()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>Argument $path is missing from the Docblock of patch</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>Argument $data is missing from the Docblock of patch</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>Argument $headers is missing from the Docblock of patch</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>22</td>
+                                        <td>No summary for method patch()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>Argument $path is missing from the Docblock of put</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>Argument $data is missing from the Docblock of put</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>Argument $headers is missing from the Docblock of put</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>26</td>
+                                        <td>No summary for method put()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>Argument $path is missing from the Docblock of delete</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>Argument $data is missing from the Docblock of delete</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>Argument $headers is missing from the Docblock of delete</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>30</td>
+                                        <td>No summary for method delete()</td>
+                                    </tr>
                                                             </tbody>
                             </table>
                         </div>
@@ -475,7 +753,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Core\Data.php
-                            <small style="float: right;padding-right: 10px;">4</small>
+                            <small style="float: right;padding-right: 10px;">7</small>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -499,13 +777,28 @@
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
+                                        <td>20</td>
                                         <td>Argument $data is missing from the Docblock of __construct</td>
                                     </tr>
                                                                     <tr>
                                         <td>error</td>
-                                        <td>6</td>
+                                        <td>20</td>
                                         <td>No summary for method __construct()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>Argument $data is missing from the Docblock of merge</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>25</td>
+                                        <td>No summary for method merge()</td>
+                                    </tr>
+                                                                    <tr>
+                                        <td>error</td>
+                                        <td>32</td>
+                                        <td>No summary for method clear()</td>
                                     </tr>
                                                             </tbody>
                             </table>
@@ -582,7 +875,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on May 22nd, 2019 at 01:15.
+                    on May 22nd, 2019 at 19:04.
                 </section>
             </section>
         </section>

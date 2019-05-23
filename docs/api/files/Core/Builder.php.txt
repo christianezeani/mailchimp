@@ -1,11 +1,39 @@
 <?php
 namespace MailChimp\Core;
 
+use MailChimp\Interfaces\ModelInterface;
+
 class Builder extends Core {
 
-  function __construct(Model &$model) {
+  private $model;
+  
+  function __construct(ModelInterface &$model) {
+    $this->model = &$modal;
+  }
+  
+  public function create() {
     // 
   }
-
+  
+  public function update() {
+    // 
+  }
+  
+  public function delete() {
+    // 
+  }
+  
+  public function get() {
+    // 
+  }
+  
+  public function first() {
+    // 
+  }
+  
+  public function clear() {
+    // 
+  }
+  
 }
 

@@ -10,7 +10,11 @@
     }
   ],
   "scripts": {
-    "post-install-cmd": [
+    "test": [
+      "phpunit --bootstrap ./vendor/autoload.php --testdox tests"
+    ],
+    "post-autoload-dump": [
+      "composer test",
       "phpdoc -d ./src/MailChimp -t ./docs/api"
     ]
   },

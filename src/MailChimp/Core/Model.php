@@ -1,24 +1,39 @@
 <?php
 namespace MailChimp\Core;
 
+use MailChimp\Interfaces\ModelInterface;
+
 /**
  * Base Model
  */
-class Model extends Core {
+class Model extends Data implements ModelInterface {
 
   /**
-   * Fields for the model
+   * API Endpoint
+   * 
+   * @var string
+   */
+  protected $path = '/';
+
+  /**
+   * Methods Allowed
    * 
    * @var array
    */
-  protected $fields = [];
+  protected $methods = [
+    'create',
+    'update',
+    'delete',
+    'get',
+    'first'
+  ];
 
   /**
-   * Fields for Get Requests
+   * Request Fields Configurations
    * 
    * @var array
    */
-  protected $getRequest = [];
+  protected $map = [];
 
   /**
    * API Query builder
@@ -27,47 +42,33 @@ class Model extends Core {
    */
   private $builder;
 
-  private $data;
-
-  function __construct($data=NULL) {
-    $this->builder = new Builder($this);
-    $this->data = new \stdClass;
+  function __construct(array $data=NULL) {
+    parent::__construct($data);
+    $this->builder = $this->c(new Builder($this));
   }
 
   /**
-   * Get Model Fields
+   * Return API Path
    * 
-   * @return array
+   * @return string
    */
-  function modelFields() {
-    return $this->fields;
+  public function getPath() {
+    return $this->path;
   }
+
+  /**
+   * Returns all allowed methods
+   * 
+   * @return string[]
+   */
+  function getMethods() {
+    return $this->methods;
+  }
+
 
   public function clear() {
-    $this->data = new \stdClass;
     $this->builder->clear();
-  }
-  
-
-
-
-  /**
-   * @ignore
-   */
-  public function __get($name) {
-    return $this->data->{$name};
-  }
-
-  public function __set($name, $value) {
-    $this->data->{$name} = $value;
-  }
-
-  public function __isset($name) {
-    return isset($this->data->{$name});
-  }
-
-  public function __unset($name) {
-    unset($this->data->{$name});
+    parent::clear();
   }
 
   public function __call($name, $arguments) {

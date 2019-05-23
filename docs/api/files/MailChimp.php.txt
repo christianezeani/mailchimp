@@ -2,8 +2,19 @@
 namespace MailChimp;
 
 use MailChimp\Core\Core;
+use MailChimp\Interfaces\MailChimpInterface;
 
-class MailChimp extends Core {
-  // 
+class MailChimp extends Core implements MailChimpInterface {
+
+  private $_config;
+
+  function __construct(Config $config) {
+    $this->_config = $config;
+  }
+
+  public function config() {
+    return $this->_config;
+  }
+
 }
 
