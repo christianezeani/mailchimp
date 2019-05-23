@@ -1,6 +1,12 @@
 <?php
 namespace MailChimp\Models;
 
+use MailChimp\Core\Model;
+
+use MailChimp\Data\Contact;
+use MailChimp\Data\CampaignDefaults;
+use MailChimp\Data\Stats;
+
 /**
  * @property string $id Audience List ID
  * @property string $name The name of the Audience list.
@@ -18,6 +24,7 @@ namespace MailChimp\Models;
  * @property string $visibility
  * @property array $modules
  * @property \MailChimp\Data\Stats $stats
+ * @property \MailChimp\Data\Link[] $_links
  */
 class Audience extends Model {
 
@@ -27,10 +34,10 @@ class Audience extends Model {
   protected $fields = [
     'id' => 'string',
     'name' => 'string',
-    'contact' => MailChimp\Data\Contact::class,
+    'contact' => Contact::class,
     'permission_reminder' => 'string',
     'use_archive_bar' => 'bool',
-    'campaign_defaults' => MailChimp\Data\CampaignDefaults::class,
+    'campaign_defaults' => CampaignDefaults::class,
     'notify_on_subscribe' => 'string',
     'notify_on_unsubscribe' => 'string',
     'date_created' => 'string',
@@ -41,8 +48,8 @@ class Audience extends Model {
     'beamer_address' => 'string',
     'visibility' => 'string',
     'modules' => 'array',
-    'stats' => MailChimp\Data\Stats::class,
-    '_links' => 'array'
+    'stats' => Stats::class,
+    '_links' => '\MailChimp\Data\Link[]',
   ];
 
 }

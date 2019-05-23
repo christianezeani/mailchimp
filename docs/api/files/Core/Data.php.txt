@@ -17,12 +17,14 @@ class Data extends Core {
    */
   private $data;
 
-  function __construct($data=NULL) {
+  function __construct(array $data=NULL) {
     $this->data = new \stdClass;
     $this->merge($data);
   }
 
   public function merge($data) {
+    if (!is_array($data)) return;
+
     foreach ($this->fields as $name => $type) {
       if (!array_key_exists($name, $data)) continue;
       $this->__set($name, $data[$name]);
@@ -54,9 +56,9 @@ class Data extends Core {
     
     if (class_exists($type)) {
       if ($isArray) {
-        $this->data->{$name}[] = $type($value);
+        $this->data->{$name}[] = new $type($value);
       } else {
-        $this->data->{$name} = $type($value);
+        $this->data->{$name} = new $type($value);
       }
     } else {
       settype($value, $type);

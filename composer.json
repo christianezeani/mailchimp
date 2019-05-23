@@ -13,9 +13,12 @@
     "test": [
       "phpunit --bootstrap ./vendor/autoload.php --testdox tests"
     ],
+    "docs": [
+      "phpdoc -d ./src/MailChimp -t ./docs/api"
+    ],
     "post-autoload-dump": [
       "composer test",
-      "phpdoc -d ./src/MailChimp -t ./docs/api"
+      "composer docs"
     ]
   },
   "require": {
