@@ -1,0 +1,11 @@
+<?php
+namespace MailChimp;
+
+class Config {
+  
+  function __construct() {
+    // 
+  }
+
+}
+

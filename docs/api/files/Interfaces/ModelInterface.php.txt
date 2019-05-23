@@ -1,0 +1,43 @@
+<?php
+namespace MailChimp\Interfaces;
+
+
+interface ModelInterface {
+
+  /**
+   * Return API Path
+   * 
+   * @return string
+   */
+  public function getPath();
+
+  /**
+   * Get Model Fields
+   * 
+   * @return array
+   */
+  function modelFields();
+
+  /**
+   * Returns all allowed methods
+   * 
+   * @return string[]
+   */
+  function getMethods();
+
+  /**
+   * Checks whether a method is allowed
+   * 
+   * @var boolean
+   */
+  function methodAllowed($method);
+
+  /**
+   * Clears the data within the model
+   * 
+   * @return void
+   */
+  public function clear();
+
+}
+

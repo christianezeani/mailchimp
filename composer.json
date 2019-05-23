@@ -9,11 +9,21 @@
       "email": "christian.ezeani@gmail.com"
     }
   ],
+  "scripts": {
+    "test": [
+      "phpunit --bootstrap ./vendor/autoload.php --testdox tests"
+    ],
+    "post-autoload-dump": [
+      "composer test",
+      "phpdoc -d ./src/MailChimp -t ./docs/api"
+    ]
+  },
   "require": {
     "php": ">=5.5.0"
   },
   "require-dev": {
-    "phpdocumentor/phpdocumentor": "2.*"
+    "phpdocumentor/phpdocumentor": "2.*",
+    "phpunit/phpunit": "^7.5"
   },
   "autoload": {
     "psr-4": {
