@@ -1,7 +1,5 @@
 <?php
 namespace MailChimp\Exceptions;
 
-class InvalidKeyException extends \Exception {
-
-}
+class InvalidKeyException extends \Exception {  }
 

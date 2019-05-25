@@ -27,7 +27,7 @@ class Builder extends Core {
     // 
   }
   
-  public function first() {
+  public function read() {
     // 
   }
   

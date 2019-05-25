@@ -1,6 +1,10 @@
 <?php
 namespace MailChimp\Core;
 
+use MailChimp\Exceptions\InvalidDataException;
+use MailChimp\Exceptions\InvalidFieldReferenceException;
+
+
 class Data extends Core {
 
   /**
@@ -17,9 +21,31 @@ class Data extends Core {
    */
   private $data;
 
+  /**
+   * Reference map for fields
+   *
+   * @var array
+   */
+  private $_reference = [];
+
   function __construct(array $data=NULL) {
+    $this->initialize();
+
     $this->data = new \stdClass;
     $this->merge($data);
+  }
+
+  private function initialize() {
+    foreach ($this->fields as $name => &$info) {
+      if (!is_array($info)) throw new InvalidDataException("Invalid field setting at '$name'.");
+      if (!array_key_exists('type', $info)) throw new InvalidDataException("Type info not set for '$name'.");
+
+      $field = new Field($name, $info['type']);
+      if (array_key_exists('required', $info)) $field->required($info['required']);
+      if (array_key_exists('default', $info)) $field->default($info['default']);
+
+      $info = $field;
+    }
   }
 
   public function merge($data) {
@@ -29,6 +55,29 @@ class Data extends Core {
       if (!array_key_exists($name, $data)) continue;
       $this->__set($name, $data[$name]);
     }
+  }
+
+  /**
+   * Gets all allowed fields of a Data
+   *
+   * @return array
+   */
+  public function getFields() {
+    return $this->fields;
+  }
+
+  public function reference(&$field, $name) {
+    if (!\array_key_exists($name, $this->fields)) {
+      throw new InvalidFieldReferenceException("Unable to reference '$name' in '".static::class."'. Field does not exist!");
+    }
+
+    $this->_reference[$name][] = &$field;
+
+    if (!isset($this->data->{$name})) {
+      $this->data->{$name} = NULL;
+    }
+
+    $field = &$this->data->{$name};
   }
 
   public function clear() {
@@ -49,24 +98,14 @@ class Data extends Core {
   public function __set($name, $value) {
     if (!array_key_exists($name, $this->fields)) return;
 
-    $type = $this->fields[$name];
-    $isArray = (\substr($type, -2) === '[]');
+    $field = &$this->fields[$name];
 
-    if ($isArray) $type = \substr($type, 0, -2);
-    
-    if (class_exists($type)) {
-      if ($isArray) {
-        $this->data->{$name}[] = new $type($value);
-      } else {
-        $this->data->{$name} = new $type($value);
-      }
-    } else {
-      settype($value, $type);
+    $this->data->{$name} = Field::cast($value, $field->type());
 
-      if ($isArray) {
-        $this->data->{$name}[] = $value;
-      } else {
-        $this->data->{$name} = $value;
+    // Update References
+    if (array_key_exists($name, $this->_reference)) {
+      foreach ($this->_reference[$name] as &$field) {
+        $field = $this->data->{$name};
       }
     }
   }

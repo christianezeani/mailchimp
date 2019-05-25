@@ -24,21 +24,21 @@ use MailChimp\Core\Data;
 class Stats extends Data {
 
   protected $fields = [
-    'member_count' => 'float',
-    'unsubscribe_count' => 'float',
-    'cleaned_count' => 'float',
-    'member_count_since_send' => 'float',
-    'unsubscribe_count_since_send' => 'float',
-    'cleaned_count_since_send' => 'float',
-    'campaign_last_sent' => 'string',
-    'merge_field_count' => 'int',
-    'avg_sub_rate' => 'float',
-    'avg_unsub_rate' => 'float',
-    'target_sub_rate' => 'float',
-    'open_rate' => 'float',
-    'click_rate' => 'float',
-    'last_sub_date' => 'string',
-    'last_unsub_date' => 'string',
+    'member_count' => ['type' => 'float'],
+    'unsubscribe_count' => ['type' => 'float'],
+    'cleaned_count' => ['type' => 'float'],
+    'member_count_since_send' => ['type' => 'float'],
+    'unsubscribe_count_since_send' => ['type' => 'float'],
+    'cleaned_count_since_send' => ['type' => 'float'],
+    'campaign_last_sent' => ['type' => 'string'],
+    'merge_field_count' => ['type' => 'int'],
+    'avg_sub_rate' => ['type' => 'float'],
+    'avg_unsub_rate' => ['type' => 'float'],
+    'target_sub_rate' => ['type' => 'float'],
+    'open_rate' => ['type' => 'float'],
+    'click_rate' => ['type' => 'float'],
+    'last_sub_date' => ['type' => 'string'],
+    'last_unsub_date' => ['type' => 'string'],
   ];
 
 }

@@ -20,20 +20,14 @@ class Model extends Data implements ModelInterface {
    * 
    * @var array
    */
-  protected $methods = [
-    'create',
-    'update',
-    'delete',
-    'get',
-    'first'
-  ];
+  protected $methods = [];
 
   /**
    * Request Fields Configurations
    * 
    * @var array
    */
-  protected $map = [];
+  protected $action = [];
 
   /**
    * API Query builder
