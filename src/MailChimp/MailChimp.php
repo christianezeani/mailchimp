@@ -19,7 +19,7 @@ class MailChimp extends Core implements MailChimpInterface {
   }
 
   public function audience(array $data = NULL): Audience {
-    return $this->c(new Audience($data));
+    return $this->own(new Audience($data));
   }
 
 }

@@ -39,7 +39,7 @@ class Model extends Data implements ModelInterface {
 
   function __construct(array $data=NULL) {
     parent::__construct($data);
-    $this->builder = $this->c(new Builder($this));
+    $this->builder = $this->own(new Builder($this));
     $this->initialize();
   }
 

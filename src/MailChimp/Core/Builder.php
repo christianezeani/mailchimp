@@ -15,7 +15,7 @@ class Builder extends Core {
     // 
   }
   
-  public function update() {
+  public function edit() {
     // 
   }
   
