@@ -89,6 +89,35 @@ class Model extends Data implements ModelInterface {
     return $this->path;
   }
 
+  /**
+   * Returns an array of action fields for an action
+   *
+   * @param string $action
+   * @return array
+   */
+  public function getActionFields($action) {
+    if (!array_key_exists($action, $this->fields)) return NULL;
+
+    $config = $this->fields[$action];
+    if (!array_key_exists('fields', $config)) return NULL;
+
+    return $config['fields'];
+  }
+
+  /**
+   * Returns an ActionField object specified by `$action` and `$name`
+   *
+   * @param string $action Action Name
+   * @param string $name Field Name
+   * @return ActionField
+   */
+  public function getActionField($action, $name) {
+    $fields = $this->getActionFields($action);
+    if (!$fields) return NULL;
+
+    if (!array_key_exists($name, $fields)) return NULL;
+    return $fields[$name];
+  }
 
   public function clear() {
     parent::clear();
