@@ -27,12 +27,12 @@ class Builder extends Core {
     // 
   }
   
-  public function first() {
+  public function read() {
     // 
   }
   
   public function clear() {
-    // 
+    $this->model->clear();
   }
   
 }
