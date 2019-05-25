@@ -8,3 +8,6 @@ $dotenv->required([
   'MAILCHIMP_LIST_ID',
   'MAILCHIMP_API_KEY'
 ]);
+
+define('MAILCHIMP_LIST_ID', getenv('MAILCHIMP_LIST_ID'));
+define('MAILCHIMP_API_KEY', getenv('MAILCHIMP_API_KEY'));

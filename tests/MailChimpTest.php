@@ -7,7 +7,7 @@ use MailChimp\MailChimp;
 class MailChimpTest extends TestCase {
 
   private function instance() {
-    $config = new Config('xxxxxxxxxxxxxxxxxxxxx-us17');
+    $config = new Config(MAILCHIMP_API_KEY);
     return new MailChimp($config);
   }
 
@@ -39,7 +39,7 @@ class MailChimpTest extends TestCase {
   
 
   public function testCanBeCreated() {
-    $config = new Config('xxxxxxxxxxxxxxxxxxxxx-us17');
+    $config = new Config(MAILCHIMP_API_KEY);
 
     $this->assertInstanceOf(
       MailChimp::class,
