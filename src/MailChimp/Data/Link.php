@@ -14,11 +14,11 @@ use MailChimp\Core\Data;
 class Link extends Data {
 
   protected $fields = [
-    'rel' => 'string',
-    'href' => 'string',
-    'method' => 'string',
-    'targetSchema' => 'string',
-    'schema' => 'string'
+    'rel' => ['type' => 'string'],
+    'href' => ['type' => 'string'],
+    'method' => ['type' => 'string'],
+    'targetSchema' => ['type' => 'string'],
+    'schema' => ['type' => 'string']
   ];
 
 }

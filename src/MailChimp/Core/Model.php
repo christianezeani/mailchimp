@@ -2,6 +2,7 @@
 namespace MailChimp\Core;
 
 use MailChimp\Interfaces\ModelInterface;
+use MailChimp\Exceptions\InvalidDataException;
 
 /**
  * Base Model
@@ -16,24 +17,18 @@ class Model extends Data implements ModelInterface {
   protected $path = '/';
 
   /**
-   * Methods Allowed
+   * Action Fields Configurations
    * 
    * @var array
    */
-  protected $methods = [
-    'create',
-    'update',
-    'delete',
-    'get',
-    'first'
-  ];
+  protected $action = [];
 
   /**
-   * Request Fields Configurations
-   * 
+   * Data holder for action fields
+   *
    * @var array
    */
-  protected $map = [];
+  private $data = [];
 
   /**
    * API Query builder
@@ -45,6 +40,44 @@ class Model extends Data implements ModelInterface {
   function __construct(array $data=NULL) {
     parent::__construct($data);
     $this->builder = $this->c(new Builder($this));
+    $this->initialize();
+  }
+
+  private function initialize() {
+    foreach ($this->action as $action => &$config) {
+      $this->data[$action] = new \stdClass;
+      if (!array_key_exists('fields', $config)) continue;
+
+      $fields = &$config['fields'];
+      foreach ($fields as $name => &$info) {
+        if (!is_array($info)) throw new InvalidDataException("Invalid field setting at '$name'.");
+
+        if (!array_key_exists('type', $info)) {
+          if (array_key_exists('reference', $info)) {
+            if (!($rfield = $this->getField($info['reference']))) {
+              throw new InvalidDataException("Type info not set for '$name'.");
+            }
+            $info['type'] = $rfield->type();
+          } else {
+            throw new InvalidDataException("Type info not set for '$name'.");
+          }
+        }
+        
+        $field = new ActionField($name, $info['type']);
+        if (array_key_exists('required', $info)) $field->required($info['required']);
+        if (array_key_exists('default', $info)) $field->default($info['default']);
+
+        if (array_key_exists('reference', $info)) {
+          $field->reference($info['reference']);
+          $this->reference(
+            $this->data[$action]->{$name},
+            $info['reference']
+          );
+        }
+
+        $info = $field;
+      }
+    }
   }
 
   /**
@@ -56,20 +89,16 @@ class Model extends Data implements ModelInterface {
     return $this->path;
   }
 
-  /**
-   * Returns all allowed methods
-   * 
-   * @return string[]
-   */
-  function getMethods() {
-    return $this->methods;
-  }
-
 
   public function clear() {
-    $this->builder->clear();
     parent::clear();
+
+    foreach ($this->data as $action => &$data) {
+      $data = new \stdClass;
+    }
   }
+
+
 
   public function __call($name, $arguments) {
     return $this->builder->{$name}(...$arguments);
