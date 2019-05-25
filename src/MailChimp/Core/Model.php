@@ -104,4 +104,19 @@ class Model extends Data implements ModelInterface {
     return $this->builder->{$name}(...$arguments);
   }
 
+  public function __get($name) {
+    if (parent::hasField($name)) return parent::__get($name);
+    // TODO: Return value of action fields
+    return NULL;
+  }
+
+  public function __set($name, $value) {
+    if (parent::hasField($name)) {
+      parent::__set($name, $value);
+      return;
+    }
+
+    // TODO: Set value for action fields
+  }
+
 }
