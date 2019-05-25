@@ -58,6 +58,17 @@ class Data extends Core {
   }
 
   /**
+   * Returns Field Information
+   *
+   * @param string $name
+   * @return Field
+   */
+  public function getField($name) {
+    if (!array_key_exists($name, $this->fields)) return NULL;
+    return $this->fields[$name];
+  }
+
+  /**
    * Gets all allowed fields of a Data
    *
    * @return array
@@ -89,6 +100,7 @@ class Data extends Core {
    * @ignore
    */
   public function __get($name) {
+    if (!$this->__isset($name)) return NULL;
     return $this->data->{$name};
   }
 

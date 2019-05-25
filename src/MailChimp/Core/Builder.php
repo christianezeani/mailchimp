@@ -32,7 +32,7 @@ class Builder extends Core {
   }
   
   public function clear() {
-    // 
+    $this->model->clear();
   }
   
 }
