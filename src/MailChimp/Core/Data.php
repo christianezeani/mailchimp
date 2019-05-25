@@ -58,13 +58,23 @@ class Data extends Core {
   }
 
   /**
+   * Return true if field exists or false otherwise
+   *
+   * @param string $name Field name
+   * @return boolean
+   */
+  public function hasField($name) {
+    return array_key_exists($name, $this->fields);
+  }
+
+  /**
    * Returns Field Information
    *
    * @param string $name
    * @return Field
    */
   public function getField($name) {
-    if (!array_key_exists($name, $this->fields)) return NULL;
+    if (!$this->hasField($name)) return NULL;
     return $this->fields[$name];
   }
 
