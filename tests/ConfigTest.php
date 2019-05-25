@@ -9,7 +9,7 @@ class ConfigTest extends TestCase {
 
   public function validKeyProvider() {
     return [
-      'xxxxxxxxxxxxxxxxxxxxx-us17' => ['xxxxxxxxxxxxxxxxxxxxx-us17']
+      MAILCHIMP_API_KEY => [MAILCHIMP_API_KEY]
     ];
   }
 

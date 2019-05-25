@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "test": [
-      "phpunit --bootstrap ./vendor/autoload.php --testdox tests"
+      "phpunit --bootstrap ./tests.bootstrap.php --testdox tests"
     ],
     "docs": [
       "phpdoc -d ./src/MailChimp -t ./docs/api"
@@ -26,7 +26,8 @@
   },
   "require-dev": {
     "phpdocumentor/phpdocumentor": "2.*",
-    "phpunit/phpunit": "^7.5"
+    "phpunit/phpunit": "^7.5",
+    "vlucas/phpdotenv": "^3.3"
   },
   "autoload": {
     "psr-4": {
