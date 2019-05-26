@@ -6,8 +6,8 @@ use MailChimp\Exceptions\InvalidClassException;
 
 class Http extends Core {
 
-  private $resultClass;
-  private $headers = [];
+  private $_class;
+  private $_headers = [];
 
   function __construct() {}
 
@@ -16,7 +16,7 @@ class Http extends Core {
       throw new InvalidClassException("Expected a subclass of '".Model::class."', '$class' supplied.");
     }
 
-    $this->resultClass = $class;
+    $this->_class = $class;
     return $this;
   }
 
