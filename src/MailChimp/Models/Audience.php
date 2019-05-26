@@ -66,27 +66,48 @@ class Audience extends Model {
     'create' => [
       'method' => 'POST',
       'fields' => [
-        'name' => ['reference' => 'name'],
-        'contact' => ['reference' => 'contact'],
-        'permission_reminder' => ['reference' => 'permission_reminder'],
+        'name' => ['reference' => 'name', 'required' => true],
+        'contact' => ['reference' => 'contact', 'required' => true],
+        'permission_reminder' => ['reference' => 'permission_reminder', 'required' => true],
         'use_archive_bar' => ['reference' => 'use_archive_bar'],
-        'campaign_defaults' => ['reference' => 'campaign_defaults'],
+        'campaign_defaults' => ['reference' => 'campaign_defaults', 'required' => true],
         'notify_on_subscribe' => ['reference' => 'notify_on_subscribe'],
         'notify_on_unsubscribe' => ['reference' => 'notify_on_unsubscribe'],
-        'email_type_option' => ['reference' => 'email_type_option'],
+        'email_type_option' => ['reference' => 'email_type_option', 'required' => true],
         'visibility' => ['reference' => 'visibility', 'default' => 'pubprv'],
-        'double_optin' => ['type' => 'bool', 'required' => true, 'default' => false],
-        'marketing_permissions' => ['type' => 'bool', 'required' => true, 'default' => false]
+        'double_optin' => ['type' => 'bool', 'default' => false],
+        'marketing_permissions' => ['type' => 'bool', 'default' => false]
       ]
     ],
     
-    'update' => [],
+    'edit' => [
+      'method' => 'PATCH',
+      'fields' => [
+        'name' => ['reference' => 'name', 'required' => true],
+        'contact' => ['reference' => 'contact', 'required' => true],
+        'permission_reminder' => ['reference' => 'permission_reminder', 'required' => true],
+        'use_archive_bar' => ['reference' => 'use_archive_bar'],
+        'campaign_defaults' => ['reference' => 'campaign_defaults', 'required' => true],
+        'notify_on_subscribe' => ['reference' => 'notify_on_subscribe'],
+        'notify_on_unsubscribe' => ['reference' => 'notify_on_unsubscribe'],
+        'email_type_option' => ['reference' => 'email_type_option', 'required' => true],
+        'visibility' => ['reference' => 'visibility', 'default' => 'pubprv'],
+        'double_optin' => ['type' => 'bool', 'default' => false],
+        'marketing_permissions' => ['type' => 'bool', 'default' => false]
+      ]
+    ],
 
-    'delete' => [],
+    'delete' => [
+      'method' => 'DELETE'
+    ],
 
-    'get' => [],
+    'get' => [
+      'method' => 'GET'
+    ],
 
-    'read' => []
+    'read' => [
+      'method' => 'GET'
+    ]
   ];
   
 }

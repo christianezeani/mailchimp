@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./tests/bootstrap.php" colors="true">
+  <testsuites>
+    <testsuite name="Root">
+      <file>./tests/units/ConfigTest.php</file>
+      <file>./tests/units/MailChimpTest.php</file>
+    </testsuite>
+    <testsuite name="Data">
+      <directory>./tests/units/Data</directory>
+    </testsuite>
+    <testsuite name="Models">
+      <directory>./tests/units/Models</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

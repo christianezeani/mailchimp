@@ -27,7 +27,7 @@ class Core {
     return $this->_config;
   }
 
-  protected function c(Core $obj) {
+  protected function own(Core $obj) {
     $obj->_config = $this->_config;
     $obj->_api = $this->_api;
 

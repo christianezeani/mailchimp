@@ -24,11 +24,25 @@ class Model extends Data implements ModelInterface {
   protected $action = [];
 
   /**
-   * Data holder for action fields
+   * Info for all action fields
+   *
+   * @var array
+   */
+  private $_action = [];
+
+  /**
+   * Data holder for unreferenced action fields
    *
    * @var array
    */
   private $data = [];
+
+  /**
+   * Info for unreferenced action fields
+   *
+   * @var array
+   */
+  private $_fields = [];
 
   /**
    * API Query builder
@@ -39,13 +53,18 @@ class Model extends Data implements ModelInterface {
 
   function __construct(array $data=NULL) {
     parent::__construct($data);
-    $this->builder = $this->c(new Builder($this));
+
+    $http = $this->own(new Http());
+    $this->builder = $this->own(new Builder($this, $http));
+
     $this->initialize();
   }
 
   private function initialize() {
-    foreach ($this->action as $action => &$config) {
-      $this->data[$action] = new \stdClass;
+    $this->data = new \stdClass;
+    $this->_action = $this->action;
+
+    foreach ($this->_action as $action => &$config) {
       if (!array_key_exists('fields', $config)) continue;
 
       $fields = &$config['fields'];
@@ -69,10 +88,9 @@ class Model extends Data implements ModelInterface {
 
         if (array_key_exists('reference', $info)) {
           $field->reference($info['reference']);
-          $this->reference(
-            $this->data[$action]->{$name},
-            $info['reference']
-          );
+        } else {
+          $this->_fields[$name] = $field;
+          $this->data->{$name} = NULL;
         }
 
         $info = $field;
@@ -89,6 +107,11 @@ class Model extends Data implements ModelInterface {
     return $this->path;
   }
 
+  public function getAction($action) {
+    if (!array_key_exists($action, $this->fields)) return NULL;
+    return $this->action[$action];
+  }
+
   /**
    * Returns an array of action fields for an action
    *
@@ -96,10 +119,8 @@ class Model extends Data implements ModelInterface {
    * @return array
    */
   public function getActionFields($action) {
-    if (!array_key_exists($action, $this->fields)) return NULL;
-
-    $config = $this->fields[$action];
-    if (!array_key_exists('fields', $config)) return NULL;
+    $info = $this->getAction($action);
+    if (!$info || !array_key_exists('fields', $info)) return NULL;
 
     return $config['fields'];
   }
@@ -122,8 +143,8 @@ class Model extends Data implements ModelInterface {
   public function clear() {
     parent::clear();
 
-    foreach ($this->data as $action => &$data) {
-      $data = new \stdClass;
+    foreach ($this->data as &$data) {
+      $data = NULL;
     }
   }
 
@@ -135,7 +156,11 @@ class Model extends Data implements ModelInterface {
 
   public function __get($name) {
     if (parent::hasField($name)) return parent::__get($name);
-    // TODO: Return value of action fields
+
+    if (isset($this->data->{$name})) {
+      return $this->data->{$name};
+    }
+    
     return NULL;
   }
 
@@ -145,7 +170,10 @@ class Model extends Data implements ModelInterface {
       return;
     }
 
-    // TODO: Set value for action fields
+    if (array_key_exists($name, $this->_fields)) {
+      $field = $this->_fields[$name];
+      $this->data->{$name} = Field::cast($value, $field->type());
+    }
   }
 
 }
