@@ -60,29 +60,31 @@ class Field extends Core {
     return $this;
   }
 
-  public static function cast($data, $type) {
-    $isArray = (\substr($type, -2) === '[]');
+  public static function cast($data, string $type = NULL) {
+    if (is_null($type) || is_null($data)) return $data;
 
-    if ($isArray) {
+    if (\substr($type, -2) === '[]') {
       $type = \substr($type, 0, -2);
-    }
 
-    if (class_exists($type)) {
-      if ($isArray) {
-        $value = [];
-        if (is_array($data)) {
-          foreach ($data as $item) {
-            $value[] = new $type($item);
-          }
+      $value = [];
+
+      if (is_array($type) && array_keys($type) === range(0, count($type) - 1)) {
+        foreach ($data as $item) {
+          $value[] = self::cast($item, $type);
         }
-        return $value;
+      } else {
+        $value[] = self::cast($data, $type);
       }
 
-      return new $type($data);
+      return $value;
+    } else {
+      if (class_exists($type)) {
+        return new $type($data);
+      }
+
+      settype($data, $type);
+      return $data;
     }
-    
-    settype($data, $type);
-    return $data;
   }
 
 }
