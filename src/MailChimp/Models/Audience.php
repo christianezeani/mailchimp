@@ -82,6 +82,8 @@ class Audience extends Model {
     
     'edit' => [
       'method' => 'PATCH',
+      'path' => '/{list_id}',
+      'params' => ['list_id' => 'id'],
       'fields' => [
         'name' => ['reference' => 'name', 'required' => true],
         'contact' => ['reference' => 'contact', 'required' => true],
@@ -98,7 +100,9 @@ class Audience extends Model {
     ],
 
     'delete' => [
-      'method' => 'DELETE'
+      'method' => 'DELETE',
+      'path' => '/{list_id}',
+      'params' => ['list_id' => 'id']
     ],
 
     'all' => [

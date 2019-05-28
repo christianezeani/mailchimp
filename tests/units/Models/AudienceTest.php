@@ -6,7 +6,6 @@ use MailChimpTestCase;
 use MailChimp\Config;
 use MailChimp\MailChimp;
 use MailChimp\Models\Audience;
-use MailChimp\Data\Error;
 
 class AudienceTest extends MailChimpTestCase {
 
@@ -73,16 +72,26 @@ class AudienceTest extends MailChimpTestCase {
 
     $data = $audience->create();
 
-    if ($data instanceof Error) {
-      echo "ERROR: \n";
-      echo "- {$data->title} \n";
-      echo "- {$data->detail} \n";
+    self::checkAndPrintError($data);
 
-      if (isset($data->errors)) {
-        echo "- Error List: \n";
-        print_r($data->errors);
-      }
-    }
+    $this->assertInstanceOf(Audience::class, $data);
+  }
+
+  /**
+   * @dataProvider mailChimpInstanceProvider
+   */
+  public function testCanEditAudience($mailChimp) {
+    $audience = $mailChimp->model(Audience::class, [
+      'id' => MAILCHIMP_LIST_ID
+    ])->read();
+
+    $audience->merge([
+      // 'name' => 'Demo Audience'
+    ]);
+
+    $data = $audience->edit();
+
+    self::checkAndPrintError($data);
 
     $this->assertInstanceOf(Audience::class, $data);
   }
