@@ -105,14 +105,38 @@ class Model extends Data implements ModelInterface {
       $path .= $child;
     }
 
-    if ($params && count($params)) {
-      $path = preg_replace_callback("/\{([\w]+)\}/", function ($match) use (&$params) {
-        if (!array_key_exists($match[1], $params)) return '';
-        return $params[$match[1]];
-      }, $path);
-    }
+    if (!is_array($params)) $params = [];
+
+    $closure = $this->parseActionPath($params);
+    $path = preg_replace_callback("/\{([\w]+)\}/", $closure, $path);
 
     return $path;
+  }
+
+  private function parseActionPath(&$params) {
+    return function ($match) use (&$params) {
+      $param = $match[1];
+
+      if (array_key_exists($param, $params)) {
+        if (substr($param, -2) === '()') {
+          $param = substr($param, 0, -2);
+          if (method_exists($this, $param)) {
+            return $this->{$param}();
+          }
+
+          return '';
+        }
+
+        $reference = $params[$param];
+        return $this->{$reference};
+      }
+
+      if (isset($this->{$param})) {
+        return $this->{$param};
+      }
+
+      return '';
+    };
   }
 
   public function getAction($name) {
