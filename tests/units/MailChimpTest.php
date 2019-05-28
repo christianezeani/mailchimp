@@ -1,24 +1,18 @@
 <?php
 
-use PHPUnit\Framework\TestCase;
 use MailChimp\Config;
 use MailChimp\MailChimp;
 
-class MailChimpTest extends TestCase {
-
-  private function instance() {
-    $config = new Config(MAILCHIMP_API_KEY);
-    return new MailChimp($config);
-  }
+class MailChimpTest extends MailChimpTestCase {
 
   public function instanceProvider() {
     return [
-      'MailChimp Instance' => [$this->instance()]
+      'MailChimp Instance' => [$this->mailChimpInstance()]
     ];
   }
 
   public function audienceValidPropertyProvider() {
-    $instance = $this->instance();
+    $instance = $this->mailChimpInstance();
     
     return [
       'name' => [$instance, 'name', 'Christian Ezeani'],
@@ -28,7 +22,7 @@ class MailChimpTest extends TestCase {
   }
 
   public function audienceInvalidPropertyProvider() {
-    $instance = $this->instance();
+    $instance = $this->mailChimpInstance();
 
     return [
       'name_1' => [$instance, 'name_1', 'Christian Ezeani'],

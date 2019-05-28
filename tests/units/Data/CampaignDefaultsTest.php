@@ -1,11 +1,10 @@
 <?php
 namespace Data;
 
-use PHPUnit\Framework\TestCase;
-
+use MailChimpTestCase;
 use MailChimp\Data\CampaignDefaults;
 
-class CampaignDefaultsTest extends TestCase {
+class CampaignDefaultsTest extends MailChimpTestCase {
 
   public function testCanBeCreated() {
     $this->assertInstanceOf(CampaignDefaults::class, new CampaignDefaults());
