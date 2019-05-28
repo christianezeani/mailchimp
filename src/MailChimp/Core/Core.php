@@ -4,6 +4,8 @@ namespace MailChimp\Core;
 use MailChimp\Interfaces\ConfigInterface;
 use MailChimp\Interfaces\MailChimpInterface;
 
+use MailChimp\Exceptions\InvalidClassException;
+
 class Core {
 
   private $_api;
@@ -11,7 +13,7 @@ class Core {
 
   protected function setApi(MailChimpInterface &$api) {
     if ($this !== $api) return;
-    $this->_api = $api;
+    $this->_api = &$api;
   }
 
   protected function api(): MailChimpInterface {
@@ -20,23 +22,36 @@ class Core {
 
   protected function setConfig(ConfigInterface &$config) {
     if (!$this->_api || $this !== $this->_api) return;
-    $this->_config = $config;
+    $this->_config = &$config;
   }
 
   protected function config(): ConfigInterface {
     return $this->_config;
   }
 
-  protected function own(Core $obj) {
-    $obj->_config = $this->_config;
-    $obj->_api = $this->_api;
+  protected function own($class, ...$args) {
+    if (!is_subclass_of($class, self::class)) {
+      throw new InvalidClassException("Expected a subclass of '".self::class."', '$class' supplied!");
+    }
 
-    return $obj;
+    $obj = new $class(...$args);
+    return $obj($this->_config, $this->_api);
   }
 
 
   public static function __callStatic($name, $arguments) {
     return (new static)->{$name}(...$arguments);
+  }
+
+  public function __invoke(ConfigInterface &$config, MailChimpInterface &$api) {
+    $this->_config = &$config;
+    $this->_api = &$api;
+
+    if (method_exists($this, '__initialize__')) {
+      $this->__initialize__();
+    }
+
+    return $this;
   }
 
 }

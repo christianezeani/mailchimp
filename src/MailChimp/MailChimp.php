@@ -25,7 +25,8 @@ class MailChimp extends Core implements MailChimpInterface {
     if (!is_subclass_of($name, Model::class)) {
       throw new InvalidModelException("Expected a subclass of '".Model::class."', '$name' supplied!");
     }
-    return $this->own(new $name($data));
+    
+    return $this->own($name, $data);
   }
 
   public function audience(array $data = NULL): Audience {

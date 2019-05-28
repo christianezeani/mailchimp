@@ -1,11 +1,10 @@
 <?php
 namespace Data;
 
-use PHPUnit\Framework\TestCase;
-
+use MailChimpTestCase;
 use MailChimp\Data\Contact;
 
-class ContactTest extends TestCase {
+class ContactTest extends MailChimpTestCase {
 
   public function testCanBeCreated() {
     $this->assertInstanceOf(Contact::class, new Contact());

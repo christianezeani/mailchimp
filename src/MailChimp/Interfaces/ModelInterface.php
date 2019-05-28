@@ -9,7 +9,7 @@ interface ModelInterface {
    * 
    * @return string
    */
-  public function getPath();
+  public function getPath(string $child = NULL, array $params = NULL);
 
   /**
    * Returns an array of action fields for an action

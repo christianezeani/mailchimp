@@ -51,16 +51,10 @@ class Model extends Data implements ModelInterface {
    */
   private $builder;
 
-  function __construct(array $data=NULL) {
-    parent::__construct($data);
 
-    $http = $this->own(new Http());
-    $this->builder = $this->own(new Builder($this, $http));
+  protected function __initialize__() {
+    $this->builder = $this->own(Builder::class, $this);
 
-    $this->initialize();
-  }
-
-  private function initialize() {
     $this->data = new \stdClass;
     $this->_action = $this->action;
 
@@ -103,13 +97,27 @@ class Model extends Data implements ModelInterface {
    * 
    * @return string
    */
-  public function getPath() {
-    return $this->path;
+  public function getPath(string $child = NULL, array $params = NULL) {
+    $path = $this->path;
+
+    if (!empty($child)) {
+      if (substr($child, 0, 1) !== '/') $child = '/' . $child;
+      $path .= $child;
+    }
+
+    if ($params && count($params)) {
+      $path = preg_replace_callback("/\{([\w]+)\}/", function ($match) use (&$params) {
+        if (!array_key_exists($match[1], $params)) return '';
+        return $params[$match[1]];
+      }, $path);
+    }
+
+    return $path;
   }
 
-  public function getAction($action) {
-    if (!array_key_exists($action, $this->fields)) return NULL;
-    return $this->action[$action];
+  public function getAction($name) {
+    if (!array_key_exists($name, $this->_action)) return NULL;
+    return $this->_action[$name];
   }
 
   /**
