@@ -117,7 +117,11 @@ class Http extends Core {
 
     if (substr($info['http_code'], 0, 1) === '2') {
       if ($this->_class) {
-        $response = $this->own($this->_class, $response);
+        if (array_keys($response) === range(0, count($response) - 1)) {
+          $response = Field::cast($response, $this->_class.'[]');
+        } else {
+          $response = $this->own($this->_class, $response);
+        }
       }
       return $response;
     } else {

@@ -87,4 +87,32 @@ class AudienceTest extends MailChimpTestCase {
     $this->assertInstanceOf(Audience::class, $data);
   }
 
+  /**
+   * @dataProvider mailChimpInstanceProvider
+   */
+  public function testCanEditAudience($mailChimp) {
+    $audience = $mailChimp->model(Audience::class, [
+      'id' => MAILCHIMP_LIST_ID
+    ])->read();
+
+    $audience->merge([
+      'name' => 'Demo Audience'
+    ]);
+
+    $data = $audience->edit();
+
+    if ($data instanceof Error) {
+      echo "ERROR: \n";
+      echo "- {$data->title} \n";
+      echo "- {$data->detail} \n";
+
+      if (isset($data->errors)) {
+        echo "- Error List: \n";
+        print_r($data->errors);
+      }
+    }
+
+    $this->assertInstanceOf(Audience::class, $data);
+  }
+
 }
