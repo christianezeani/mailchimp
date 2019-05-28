@@ -15,6 +15,7 @@ class MailChimpTestCase extends TestCase {
 
   protected static function checkAndPrintError($data) {
     if ($data instanceof Error) {
+      echo "------------------------------\n";
       echo "ERROR: \n";
       echo "- {$data->title} \n";
       echo "- {$data->detail} \n";
@@ -22,7 +23,10 @@ class MailChimpTestCase extends TestCase {
       if (isset($data->errors)) {
         echo "- Error List: \n";
         print_r($data->errors);
+        echo "\n";
       }
+
+      echo "------------------------------\n\n";
     }
   }
 
