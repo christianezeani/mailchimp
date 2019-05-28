@@ -74,7 +74,7 @@ class Audience extends Model {
         'notify_on_subscribe' => ['reference' => 'notify_on_subscribe'],
         'notify_on_unsubscribe' => ['reference' => 'notify_on_unsubscribe'],
         'email_type_option' => ['reference' => 'email_type_option', 'required' => true],
-        'visibility' => ['reference' => 'visibility', 'default' => 'pubprv'],
+        'visibility' => ['reference' => 'visibility', 'default' => 'prv'],
         'double_optin' => ['type' => 'bool', 'default' => false],
         'marketing_permissions' => ['type' => 'bool', 'default' => false]
       ]
@@ -91,7 +91,7 @@ class Audience extends Model {
         'notify_on_subscribe' => ['reference' => 'notify_on_subscribe'],
         'notify_on_unsubscribe' => ['reference' => 'notify_on_unsubscribe'],
         'email_type_option' => ['reference' => 'email_type_option', 'required' => true],
-        'visibility' => ['reference' => 'visibility', 'default' => 'pubprv'],
+        'visibility' => ['reference' => 'visibility', 'default' => 'prv'],
         'double_optin' => ['type' => 'bool', 'default' => false],
         'marketing_permissions' => ['type' => 'bool', 'default' => false]
       ]
@@ -101,26 +101,16 @@ class Audience extends Model {
       'method' => 'DELETE'
     ],
 
-    'get' => [
+    'all' => [
       'method' => 'GET'
     ],
 
     'read' => [
-      'method' => 'GET'
+      'method' => 'GET',
+      'path' => '/{list_id}',
+      'params' => ['list_id' => 'id']
     ]
   ];
   
 }
 
-
-/*
-double_optin	
-Type: Boolean	
-Title: Double Opt In	
-Read only: false	Whether or not to require the subscriber to confirm subscription via email.
-
-marketing_permissions	
-Type: Boolean	
-Title: Marketing Permissions	
-Read only: false	Whether or not the list has marketing permissions (eg. GDPR) enabled.
-*/

@@ -2,6 +2,7 @@
 namespace MailChimp\Core;
 
 use MailChimp\Interfaces\ModelInterface;
+use MailChimp\Exceptions\FieldRequiredException;
 use MailChimp\Exceptions\ActionNotDefinedException;
 
 class Builder extends Core {
@@ -9,40 +10,77 @@ class Builder extends Core {
   private $http;
   private $model;
   private $modelClass;
+
+  const ACTIONS = ['create', 'edit', 'delete', 'all', 'read'];
   
-  function __construct(ModelInterface &$model, Http $http) {
+  function __construct(ModelInterface &$model) {
     $this->modelClass = get_class($model);
-    $this->model = &$modal;
-    $this->http = $http;
+    $this->model = &$model;
   }
 
-  private function getAction($action) {
-    $info = $this->model->getAction($action);
-    if (!$info) throw new ActionNotDefinedException("No action for defined for '$action'.");
+  protected function __initialize__() {
+    $config = $this->config();
+
+    $this->http = $this->own(Http::class, $this->modelClass);
+    $this->http->withHeader('Authorization', 'Basic ' . $config->getKey());
   }
-  
-  public function create() {
-    $info = $this->getAction(__FUNCTION__);
+
+  private function getAction($name) {
+    if (!($info = $this->model->getAction($name))) {
+      throw new ActionNotDefinedException("No action for defined for '$name'.");
+    }
+    return $info;
   }
-  
-  public function edit() {
-    $info = $this->getAction(__FUNCTION__);
+
+  private function getActionPath($action) {
+    if (!array_key_exists('path', $action)) {
+      $action['path'] = '';
+    }
+
+    $params = [];
+    if (array_key_exists('params', $action)) {
+      foreach ($action['params'] as $name => $reference) {
+        $params[$name] = $this->model->{$reference};
+      }
+    }
+
+    return $this->model->getPath($action['path'], $params);
   }
-  
-  public function delete() {
-    $info = $this->getAction(__FUNCTION__);
-  }
-  
-  public function get() {
-    $info = $this->getAction(__FUNCTION__);
-  }
-  
-  public function read() {
-    $info = $this->getAction(__FUNCTION__);
+
+  private function getActionData($action) {
+    $data = [];
+
+    if (array_key_exists('fields', $action)) {
+      foreach ($action['fields'] as $name => $field) {
+        $value = $this->model->{$name};
+        if (is_null($value)) {
+          if ($field->required()) {
+            throw new FieldRequiredException("'$name' field is required");
+          }
+          continue;
+        }
+        $data[$name] = $value;
+      }
+    }
+
+    return $data;
   }
   
   public function clear() {
     $this->model->clear();
+  }
+
+
+  public function __call($name, $arguments) {
+    if (in_array($name, self::ACTIONS)) {
+      $action = $this->getAction($name);
+      $path = $this->getActionPath($action);
+      $data = $this->getActionData($action);
+
+      return $this->http->request($action['method'], $path, $data);
+    }
+
+    return NULL;
   }
   
 }
