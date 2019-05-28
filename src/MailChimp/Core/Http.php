@@ -1,6 +1,7 @@
 <?php
 namespace MailChimp\Core;
 
+use MailChimp\Data\Error;
 use MailChimp\Exceptions\InvalidClassException;
 
 
@@ -14,15 +15,12 @@ class Http extends Core {
   private $_headers = [];
   private $_ssl = true;
 
-  function __construct() {}
-
-  public function as($class) {
+  function __construct(string $class) {
     if (!is_subclass_of($class, Model::class)) {
       throw new InvalidClassException("Expected a subclass of '".Model::class."', '$class' supplied.");
     }
 
     $this->_class = $class;
-    return $this;
   }
 
   public function ssl(bool $value) {
@@ -66,6 +64,8 @@ class Http extends Core {
     $endpoint = $config->endpoint($path);
     $key = $config->getKey();
 
+    if ($data) $data = \json_encode($data);
+
     switch ($method) {
       case 'GET': {
         if (!$data || !count($data)) break;
@@ -93,14 +93,14 @@ class Http extends Core {
     }
 
     $options[CURLOPT_URL] = $endpoint;
-    $options[CURLOPT_HEADER] = true;
+    // $options[CURLOPT_HEADER] = true;
     $options[CURLOPT_FOLLOWLOCATION] = true;
     $options[CURLOPT_RETURNTRANSFER] = true;
     $options[CURLOPT_HTTPHEADER] = $this->headers();
 
     // Basic Auth
-    $options[CURLOPT_HTTPAUTH] = CURLAUTH_ANY;
-    $options[CURLOPT_USERPWD] = "mailchimp:{$key}";
+    // $options[CURLOPT_HTTPAUTH] = CURLAUTH_ANY;
+    // $options[CURLOPT_USERPWD] = "mailchimp:{$key}";
 
     if (!$this->_ssl) {
       $options[CURLOPT_SSL_VERIFYSTATUS] = false;
@@ -108,9 +108,23 @@ class Http extends Core {
     }
 
     \curl_setopt_array($ch, $options);
-    $resp = \curl_exec($ch);
+    $response = \curl_exec($ch);
     $info = \curl_getinfo($ch);
+
     \curl_close($ch);
+
+    $response = @json_decode($response, true);
+
+    if (substr($info['http_code'], 0, 1) === '2') {
+      if ($this->_class) {
+        $response = $this->own($this->_class, $response);
+      }
+      return $response;
+    } else {
+      $response = $this->own(Error::class, $response);
+      // print_r($response);
+      return $response;
+    }
   }
 
   public function get($path, array $data=NULL) {
