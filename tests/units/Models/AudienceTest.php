@@ -3,10 +3,10 @@ namespace Models;
 
 use MailChimpTestCase;
 
-use MailChimp\Config;
-use MailChimp\MailChimp;
 use MailChimp\Models\Audience;
-use MailChimp\Response\AudienceList;
+
+use MailChimp\Response\AudienceListResponse;
+use MailChimp\Response\BatchMemberResponse;
 
 class AudienceTest extends MailChimpTestCase {
 
@@ -107,7 +107,31 @@ class AudienceTest extends MailChimpTestCase {
 
     self::checkAndPrintError($data);
 
-    $this->assertInstanceOf(AudienceList::class, $data);
+    $this->assertInstanceOf(AudienceListResponse::class, $data);
+  }
+
+  /**
+   * @dataProvider mailChimpInstanceProvider
+   */
+  public function testCanUpdateMembers($mailChimp) {
+    $audience = $mailChimp->model(Audience::class, [
+      'id' => MAILCHIMP_LIST_ID
+    ]);
+
+    $audience->update_existing = true;
+    $audience->members = [
+      [
+        'email_address' => 'xxxxxxxxxxxxx@gmail.com',
+        'merge_fields' => ['FNAME' => 'Christian', 'LNAME' => 'Ezeani'],
+        'status' => 'subscribed'
+      ]
+    ];
+
+    $data = $audience->updateMembers();
+
+    self::checkAndPrintError($data);
+
+    $this->assertInstanceOf(BatchMemberResponse::class, $data);
   }
 
 }
