@@ -8,7 +8,8 @@ use MailChimp\Data\CampaignDefaults;
 use MailChimp\Data\Stats;
 use MailChimp\Data\Link;
 
-use MailChimp\Response\AudienceList;
+use MailChimp\Response\AudienceListResponse;
+use MailChimp\Response\BatchMemberResponse;
 
 
 /**
@@ -109,13 +110,24 @@ class Audience extends Model {
 
     'all' => [
       'method' => 'GET',
-      'responseType' => AudienceList::class
+      'responseType' => AudienceListResponse::class
     ],
 
     'read' => [
       'method' => 'GET',
       'path' => '/{list_id}',
       'params' => ['list_id' => 'id']
+    ],
+
+    'updateMembers' => [
+      'method' => 'POST',
+      'path' => '/{list_id}',
+      'params' => ['list_id' => 'id'],
+      'fields' => [
+        'members' => ['type' => Member::class.'[]', 'required' => true],
+        'update_existing' => ['type' => 'boolean']
+      ],
+      'responseType' => BatchMemberResponse::class
     ]
   ];
   

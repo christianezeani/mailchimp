@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 use MailChimp\Config;
 use MailChimp\MailChimp;
-use MailChimp\Response\Error;
+use MailChimp\Response\ErrorResponse;
 
 class MailChimpTestCase extends TestCase {
 
@@ -14,7 +14,7 @@ class MailChimpTestCase extends TestCase {
   }
 
   protected static function checkAndPrintError($data) {
-    if ($data instanceof Error) {
+    if ($data instanceof ErrorResponse) {
       echo "------------------------------\n";
       echo "ERROR: \n";
       echo "- {$data->title} \n";

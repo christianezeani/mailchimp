@@ -1,7 +1,7 @@
 <?php
 namespace MailChimp\Core;
 
-use MailChimp\Response\Error;
+use MailChimp\Response\ErrorResponse;
 use MailChimp\Exceptions\InvalidClassException;
 
 
@@ -19,13 +19,15 @@ class Http extends Core {
     $this->as($class);
   }
 
-  public function as(string $class) {
-    if ($class === Error::class || is_subclass_of($class, Error::class)) {
-      throw new InvalidClassException("Cannot accept '$class' or a subclass of '".Error::class."'.");
-    }
-
-    if (!is_subclass_of($class, Data::class)) {
-      throw new InvalidClassException("Expected a subclass of '".Data::class."', '$class' supplied.");
+  public function as(string $class = NULL) {
+    if (!is_null($class)) {
+      if ($class === ErrorResponse::class || is_subclass_of($class, ErrorResponse::class)) {
+        throw new InvalidClassException("Cannot accept '$class' or a subclass of '".ErrorResponse::class."'.");
+      }
+  
+      if (!is_subclass_of($class, Data::class)) {
+        throw new InvalidClassException("Expected a subclass of '".Data::class."', '$class' supplied.");
+      }
     }
 
     $this->_class = $class;
@@ -125,7 +127,9 @@ class Http extends Core {
     $response = @json_decode($response, true);
 
     if (substr($info['http_code'], 0, 1) === '2') {
-      if ($this->_class) {
+      if (is_null($response)) return $response;
+
+      if ($this->_class && is_array($response)) {
         if (array_keys($response) === range(0, count($response) - 1)) {
           $response = Field::cast($response, $this->_class.'[]');
         } else {
@@ -134,7 +138,7 @@ class Http extends Core {
       }
       return $response;
     } else {
-      $response = $this->own(Error::class, $response);
+      $response = $this->own(ErrorResponse::class, $response);
       // print_r($response);
       return $response;
     }

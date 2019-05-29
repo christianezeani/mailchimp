@@ -10,7 +10,7 @@ use MailChimp\Data\Location;
 use MailChimp\Data\Link;
 use MailChimp\Data\MarketingPermission;
 
-use MailChimp\Response\MemberList;
+use MailChimp\Response\MemberListResponse;
 
 
 class Member extends Model {
@@ -74,30 +74,90 @@ class Member extends Model {
 
     'edit' => [
       'method' => 'PATCH',
-      'fields' => []
+      'path' => '/{subscriber_hash}',
+      'params' => [
+        'subscriber_hash' => 'email_hash()'
+      ],
+      'fields' => [
+        'email_address' => ['reference' => 'email_address', 'required' => true],
+        'email_type' => ['reference' => 'email_type'],
+        'status' => ['reference' => 'status', 'required' => true],
+        'merge_fields' => ['reference' => 'merge_fields'],
+        'interests' => ['reference' => 'interests'],
+        'language' => ['reference' => 'language'],
+        'vip' => ['reference' => 'vip'],
+        'location' => ['reference' => 'location'],
+        'marketing_permissions' => ['type' => MarketingPermission::class.'[]'],
+        'ip_signup' => ['reference' => 'ip_signup'],
+        'timestamp_signup' => ['reference' => 'timestamp_signup'],
+        'ip_opt' => ['reference' => 'ip_opt'],
+        'tags' => ['reference' => 'tags']
+      ]
+    ],
+
+    'addOrEdit' => [
+      'method' => 'PUT',
+      'path' => '/{subscriber_hash}',
+      'params' => [
+        'subscriber_hash' => 'old_email_hash()'
+      ],
+      'fields' => [
+        'old_email_address' => ['type' => 'string', 'ignored' => true],
+        'email_address' => ['reference' => 'email_address', 'required' => true],
+        'email_type' => ['reference' => 'email_type'],
+        'status_if_new' => ['reference' => 'status_if_new', 'required' => true],
+        'status' => ['reference' => 'status'],
+        'merge_fields' => ['reference' => 'merge_fields'],
+        'interests' => ['reference' => 'interests'],
+        'language' => ['reference' => 'language'],
+        'vip' => ['reference' => 'vip'],
+        'location' => ['reference' => 'location'],
+        'marketing_permissions' => ['type' => MarketingPermission::class.'[]'],
+        'ip_signup' => ['reference' => 'ip_signup'],
+        'timestamp_signup' => ['reference' => 'timestamp_signup'],
+        'ip_opt' => ['reference' => 'ip_opt'],
+        'tags' => ['reference' => 'tags']
+      ]
     ],
 
     'delete' => [
-      'method' => 'DELETE'
+      'method' => 'DELETE',
+      'path' => '/{subscriber_hash}',
+      'params' => [
+        'subscriber_hash' => 'email_hash()'
+      ]
+    ],
+
+    'deletePermanently' => [
+      'method' => 'POST',
+      'path' => '/{subscriber_hash}/actions/delete-permanent',
+      'params' => [
+        'subscriber_hash' => 'email_hash()'
+      ]
     ],
 
     'all' => [
       'method' => 'GET',
-      'responseType' => MemberList::class
+      'responseType' => MemberListResponse::class
     ],
     
     'read' => [
       'method' => 'GET',
       'path' => '/{subscriber_hash}',
       'params' => [
-        'subscriber_hash' => 'subscriber_hash()'
+        'subscriber_hash' => 'email_hash()'
       ]
     ]
   ];
 
-  protected function subscriber_hash() {
+  protected function email_hash() {
     $email = strtolower($this->email_address);
     return hash('md5', $email);
+  }
+
+  protected function old_email_hash() {
+    $email = (isset($this->old_email_address)) ? $this->old_email_address : $this->email_address;
+    return hash('md5', strtolower($email));
   }
 
 }

@@ -1,13 +1,16 @@
 <?php
 namespace MailChimp\Core;
 
+use ArrayAccess;
+use JsonSerializable;
+
 
 class HashMap extends Core implements JsonSerializable, ArrayAccess {
 
   private $_type = NULL;
   private $data = [];
 
-  function __construct(string $data = NULL, string $type = NULL) {
+  function __construct(array $data = NULL, string $type = NULL) {
     $this->_type = $type;
 
     if (!is_array($data)) return;

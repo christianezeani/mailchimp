@@ -10,7 +10,7 @@ use MailChimp\Core\Data;
  * @property string $detail A human-readable explanation specific to this occurrence of the problem. Learn more about errors.
  * @property string $instance A string that identifies this specific occurrence of the problem. Please provide this ID when contacting support.
  */
-class Error extends Data {
+class ErrorResponse extends Data {
 
   /**
    * @ignore
