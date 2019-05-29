@@ -3,11 +3,11 @@ namespace MailChimp\Response;
 
 use MailChimp\Core\Data;
 use MailChimp\Data\Link;
-use MailChimp\Models\Audience;
+use MailChimp\Models\Lists\Audience;
 
 
 /**
- * @property \MailChimp\Models\Audience[] $lists
+ * @property \MailChimp\Models\Lists\Audience[] $lists
  * @property \MailChimp\Data\Link $_links
  * @property int $total_items
  */

@@ -1,9 +1,9 @@
 <?php
-namespace Models;
+namespace Models\Lists;
 
 use MailChimpTestCase;
 
-use MailChimp\Models\Audience;
+use MailChimp\Models\Lists\Audience;
 
 use MailChimp\Response\AudienceListResponse;
 use MailChimp\Response\BatchMemberResponse;

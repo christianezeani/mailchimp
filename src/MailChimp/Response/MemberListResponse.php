@@ -3,10 +3,10 @@ namespace MailChimp\Response;
 
 use MailChimp\Core\Data;
 use MailChimp\Data\Link;
-use MailChimp\Model\Member;
+use MailChimp\Models\Lists\Member;
 
 /**
- * @property \MailChimp\Model\Member[] $members
+ * @property \MailChimp\Models\Lists\Member[] $members
  * @property string $list_id
  * @property \MailChimp\Data\Link[] $_links
  * @property float $total_items
