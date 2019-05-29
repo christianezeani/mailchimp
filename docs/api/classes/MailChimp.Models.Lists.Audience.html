@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta charset="utf-8"/>
-    <title>    API Documentation &raquo; \MailChimp\Data\Location
+    <title>    API Documentation &raquo; \MailChimp\Models\Lists\Audience
 </title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
@@ -132,6 +132,24 @@
     </li>
 
                                                                                                                                                                 <li class="method public inherited">
+        <a href="#method_getAction" title="getAction :: ">
+            <span class="description"></span><pre>getAction</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getActionField" title="getActionField :: Returns an ActionField object specified by `$action` and `$name`">
+            <span class="description">Returns an ActionField object specified by `$action` and `$name`</span><pre>getActionField</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getActionFields" title="getActionFields :: Returns an array of action fields for an action">
+            <span class="description">Returns an array of action fields for an action</span><pre>getActionFields</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
         <a href="#method_getField" title="getField :: Returns Field Information">
             <span class="description">Returns Field Information</span><pre>getField</pre>
         </a>
@@ -140,6 +158,12 @@
                                                                                                         <li class="method public inherited">
         <a href="#method_getFields" title="getFields :: Gets all allowed fields of a Data">
             <span class="description">Gets all allowed fields of a Data</span><pre>getFields</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
+        <a href="#method_getPath" title="getPath :: Return API Path">
+            <span class="description">Return API Path</span><pre>getPath</pre>
         </a>
     </li>
 
@@ -161,7 +185,7 @@
         </a>
     </li>
 
-                                                                                                                                                                <li class="method public inherited">
+                                                                                                                                                                                                                        <li class="method public inherited">
         <a href="#method_reference" title="reference :: ">
             <span class="description"></span><pre>reference</pre>
         </a>
@@ -181,12 +205,12 @@
                                 <span class="description"></span><pre>config</pre>
                             </a>
                         </li>
-                                                                                                                                                                                                                                                                                                        <li class="method protected inherited">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li class="method protected inherited">
                             <a href="#method_own" title="own :: ">
                                 <span class="description"></span><pre>own</pre>
                             </a>
                         </li>
-                                                                                                                    <li class="method protected inherited">
+                                                                                                                                                        <li class="method protected inherited">
                             <a href="#method_setApi" title="setApi :: ">
                                 <span class="description"></span><pre>setApi</pre>
                             </a>
@@ -200,12 +224,17 @@
         </li>
         <li class="nav-header private">» Private
             <ul>
-                                                                                                                                                                                                                                                                                                                                        <li class="method private inherited">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li class="method private inherited">
                             <a href="#method_initialize" title="initialize :: ">
                                 <span class="description"></span><pre>initialize</pre>
                             </a>
                         </li>
-                                                                                                                                                                                                                                                                        </ul>
+                                                                                                                                                                                            <li class="method private inherited">
+                            <a href="#method_parseActionPath" title="parseActionPath :: ">
+                                <span class="description"></span><pre>parseActionPath</pre>
+                            </a>
+                        </li>
+                                                                                                                                                            </ul>
         </li>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
@@ -219,11 +248,11 @@
 
         <div class="span8">
             <div class="element class">
-                <h1>Location</h1>
+                <h1>Audience</h1>
                 <small style="display: block; text-align: right">
-                                            Extends <a href="../classes/MailChimp.Core.Data.html">\MailChimp\Core\Data</a>
+                                            Extends <a href="../classes/MailChimp.Core.Model.html">\MailChimp\Core\Model</a>
                                                         </small>
-                <p class="short_description"></p>
+                <p class="short_description">Base Model</p>
                 <div class="details">
                     <div class="long_description">
                         
@@ -382,6 +411,103 @@
                             </div>
 
                         </div>
+                                            <a id="method_getAction"></a>
+                        <div class="element clickable method public  method_getAction inherited" data-toggle="collapse" data-target=".method_getAction .collapse">
+                            <h2>getAction</h2>
+                            <pre>getAction( $name) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code></code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getActionField"></a>
+                        <div class="element clickable method public  method_getActionField inherited" data-toggle="collapse" data-target=".method_getActionField .collapse">
+                            <h2>Returns an ActionField object specified by `$action` and `$name`</h2>
+                            <pre>getActionField(string $action, string $name) : \MailChimp\Core\ActionField</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$action</h4>
+                                                <code>string</code><p><p>Action Name</p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$name</h4>
+                                                <code>string</code><p><p>Field Name</p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code><a href="../classes/MailChimp.Core.ActionField.html">\MailChimp\Core\ActionField</a></code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getActionFields"></a>
+                        <div class="element clickable method public  method_getActionFields inherited" data-toggle="collapse" data-target=".method_getActionFields .collapse">
+                            <h2>Returns an array of action fields for an action</h2>
+                            <pre>getActionFields(string $action) : array&lt;mixed,\MailChimp\Core\ActionField&gt;</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$action</h4>
+                                                <code>string</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>array&lt;mixed,<a href="../classes/MailChimp.Core.ActionField.html">\MailChimp\Core\ActionField</a>&gt;</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
                                             <a id="method_getField"></a>
                         <div class="element clickable method public  method_getField inherited" data-toggle="collapse" data-target=".method_getField .collapse">
                             <h2>Returns Field Information</h2>
@@ -434,6 +560,44 @@
                                     
                                                                             <h3>Response</h3>
                                         <code>array</code><p></p>
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_getPath"></a>
+                        <div class="element clickable method public  method_getPath inherited" data-toggle="collapse" data-target=".method_getPath .collapse">
+                            <h2>Return API Path</h2>
+                            <pre>getPath(\MailChimp\Core\string $child = NULL, array $params = NULL) : string</pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$child</h4>
+                                                <code>\MailChimp\Core\string</code><p></p>
+                                            </div>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code>array</code><p></p>
+                                            </div>
+                                                                            
+                                                                            <h3>Response</h3>
+                                        <code>string</code><p></p>
                                                                     </div>
                             </div>
 
@@ -615,6 +779,45 @@
                             </div>
 
                         </div>
+                                            <a id="method_parseActionPath"></a>
+                        <div class="element clickable method private  method_parseActionPath inherited" data-toggle="collapse" data-target=".method_parseActionPath .collapse">
+                            <h2>parseActionPath</h2>
+                            <pre>parseActionPath( &$params) </pre>
+                            <div class="labels">
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"></div>
+
+                                    <table class="table">
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                    <tr>
+                                                <th>
+                                                    
+                                                </th>
+                                                <td>
+                                                                                                    </td>
+                                            </tr>
+                                                                                                                    </table>
+
+                                                                            <h3>Arguments</h3>
+                                                                                    <div class="subelement argument">
+                                                <h4>$params</h4>
+                                                <code></code><p></p>
+                                            </div>
+                                                                            
+                                                                    </div>
+                            </div>
+
+                        </div>
                                             <a id="method_reference"></a>
                         <div class="element clickable method public  method_reference inherited" data-toggle="collapse" data-target=".method_reference .collapse">
                             <h2>reference</h2>
@@ -739,10 +942,62 @@
                     
                     
                                                                 <h3><i class="icon-custom icon-property"></i> Properties</h3>
-                                                    <a id="property_fields"> </a>
-                            <div class="element clickable property  protected property_fields inherited" data-toggle="collapse" data-target=".property_fields .collapse">
-                                <h2>Fields for the model</h2>
-                                <pre>fields : array</pre>
+                                                    <a id="property_path"> </a>
+                            <div class="element clickable property  protected property_path inherited" data-toggle="collapse" data-target=".property_path .collapse">
+                                <h2>API Endpoint</h2>
+                                <pre>path : string</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_action"> </a>
+                            <div class="element clickable property  protected property_action inherited" data-toggle="collapse" data-target=".property_action .collapse">
+                                <h2>Action Fields Configurations</h2>
+                                <pre>action : array</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property__action"> </a>
+                            <div class="element clickable property  private property__action inherited" data-toggle="collapse" data-target=".property__action .collapse">
+                                <h2>Info for all action fields</h2>
+                                <pre>_action : array</pre>
                                 <div class="labels">
                                     <span class="label">inherited</span>                                                                    </div>
                                 <div class="row collapse">
@@ -788,6 +1043,84 @@
 
                                                                                     <h3>Type(s)</h3>
                                             <code>object</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property__fields"> </a>
+                            <div class="element clickable property  private property__fields inherited" data-toggle="collapse" data-target=".property__fields .collapse">
+                                <h2>Info for unreferenced action fields</h2>
+                                <pre>_fields : array</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_builder"> </a>
+                            <div class="element clickable property  private property_builder inherited" data-toggle="collapse" data-target=".property_builder .collapse">
+                                <h2>API Query builder</h2>
+                                <pre>builder : \MailChimp\Core\Builder</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code><a href="../classes/MailChimp.Core.Builder.html">\MailChimp\Core\Builder</a></code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_fields"> </a>
+                            <div class="element clickable property  protected property_fields inherited" data-toggle="collapse" data-target=".property_fields .collapse">
+                                <h2>Fields for the model</h2>
+                                <pre>fields : array</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array</code>
                                                                             </div>
                                 </div>
                             </div>
@@ -867,15 +1200,15 @@
                                                                             </div>
                                 </div>
                             </div>
-                                                    <a id="property_latitude"> </a>
-                            <div class="element clickable property  public property_latitude" data-toggle="collapse" data-target=".property_latitude .collapse">
-                                <h2>latitude</h2>
-                                <pre>latitude : float</pre>
+                                                    <a id="property_id"> </a>
+                            <div class="element clickable property  public property_id" data-toggle="collapse" data-target=".property_id .collapse">
+                                <h2>id</h2>
+                                <pre>id : string</pre>
                                 <div class="labels">
                                                                                                         </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
-                                        <div class="long_description"></div>
+                                        <div class="long_description"><p>Audience List ID</p></div>
 
                                         <table class="table">
                                                                                             <tr>
@@ -888,19 +1221,19 @@
                                                                                     </table>
 
                                                                                     <h3>Type(s)</h3>
-                                            <code>float</code>
+                                            <code>string</code>
                                                                             </div>
                                 </div>
                             </div>
-                                                    <a id="property_longitude"> </a>
-                            <div class="element clickable property  public property_longitude" data-toggle="collapse" data-target=".property_longitude .collapse">
-                                <h2>longitude</h2>
-                                <pre>longitude : float</pre>
+                                                    <a id="property_name"> </a>
+                            <div class="element clickable property  public property_name" data-toggle="collapse" data-target=".property_name .collapse">
+                                <h2>name</h2>
+                                <pre>name : string</pre>
                                 <div class="labels">
                                                                                                         </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
-                                        <div class="long_description"></div>
+                                        <div class="long_description"><p>The name of the Audience list.</p></div>
 
                                         <table class="table">
                                                                                             <tr>
@@ -913,19 +1246,19 @@
                                                                                     </table>
 
                                                                                     <h3>Type(s)</h3>
-                                            <code>float</code>
+                                            <code>string</code>
                                                                             </div>
                                 </div>
                             </div>
-                                                    <a id="property_gmtoff"> </a>
-                            <div class="element clickable property  public property_gmtoff" data-toggle="collapse" data-target=".property_gmtoff .collapse">
-                                <h2>gmtoff</h2>
-                                <pre>gmtoff : integer</pre>
+                                                    <a id="property_contact"> </a>
+                            <div class="element clickable property  public property_contact" data-toggle="collapse" data-target=".property_contact .collapse">
+                                <h2>contact</h2>
+                                <pre>contact : \MailChimp\Data\Contact</pre>
                                 <div class="labels">
                                                                                                         </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
-                                        <div class="long_description"></div>
+                                        <div class="long_description"><p>Contact information displayed in campaign footers to comply with international spam laws.</p></div>
 
                                         <table class="table">
                                                                                             <tr>
@@ -938,39 +1271,14 @@
                                                                                     </table>
 
                                                                                     <h3>Type(s)</h3>
-                                            <code>integer</code>
+                                            <code>\MailChimp\Data\Contact</code>
                                                                             </div>
                                 </div>
                             </div>
-                                                    <a id="property_dstoff"> </a>
-                            <div class="element clickable property  public property_dstoff" data-toggle="collapse" data-target=".property_dstoff .collapse">
-                                <h2>dstoff</h2>
-                                <pre>dstoff : integer</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description"></div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        
-                                                    </th>
-                                                    <td>
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-
-                                                                                    <h3>Type(s)</h3>
-                                            <code>integer</code>
-                                                                            </div>
-                                </div>
-                            </div>
-                                                    <a id="property_country_code"> </a>
-                            <div class="element clickable property  public property_country_code" data-toggle="collapse" data-target=".property_country_code .collapse">
-                                <h2>country_code</h2>
-                                <pre>country_code : string</pre>
+                                                    <a id="property_permission_reminder"> </a>
+                            <div class="element clickable property  public property_permission_reminder" data-toggle="collapse" data-target=".property_permission_reminder .collapse">
+                                <h2>permission_reminder</h2>
+                                <pre>permission_reminder : string</pre>
                                 <div class="labels">
                                                                                                         </div>
                                 <div class="row collapse">
@@ -992,10 +1300,35 @@
                                                                             </div>
                                 </div>
                             </div>
-                                                    <a id="property_timezone"> </a>
-                            <div class="element clickable property  public property_timezone" data-toggle="collapse" data-target=".property_timezone .collapse">
-                                <h2>timezone</h2>
-                                <pre>timezone : string</pre>
+                                                    <a id="property_campaign_defaults"> </a>
+                            <div class="element clickable property  public property_campaign_defaults" data-toggle="collapse" data-target=".property_campaign_defaults .collapse">
+                                <h2>campaign_defaults</h2>
+                                <pre>campaign_defaults : \MailChimp\Data\CampaignDefaults</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>\MailChimp\Data\CampaignDefaults</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_notify_on_subscribe"> </a>
+                            <div class="element clickable property  public property_notify_on_subscribe" data-toggle="collapse" data-target=".property_notify_on_subscribe .collapse">
+                                <h2>notify_on_subscribe</h2>
+                                <pre>notify_on_subscribe : string</pre>
                                 <div class="labels">
                                                                                                         </div>
                                 <div class="row collapse">
@@ -1014,19 +1347,294 @@
 
                                                                                     <h3>Type(s)</h3>
                                             <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_notify_on_unsubscribe"> </a>
+                            <div class="element clickable property  public property_notify_on_unsubscribe" data-toggle="collapse" data-target=".property_notify_on_unsubscribe .collapse">
+                                <h2>notify_on_unsubscribe</h2>
+                                <pre>notify_on_unsubscribe : string</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_date_created"> </a>
+                            <div class="element clickable property  public property_date_created" data-toggle="collapse" data-target=".property_date_created .collapse">
+                                <h2>date_created</h2>
+                                <pre>date_created : string</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_list_rating"> </a>
+                            <div class="element clickable property  public property_list_rating" data-toggle="collapse" data-target=".property_list_rating .collapse">
+                                <h2>list_rating</h2>
+                                <pre>list_rating : integer</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>integer</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_email_type_option"> </a>
+                            <div class="element clickable property  public property_email_type_option" data-toggle="collapse" data-target=".property_email_type_option .collapse">
+                                <h2>email_type_option</h2>
+                                <pre>email_type_option : boolean</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>boolean</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_subscribe_url_short"> </a>
+                            <div class="element clickable property  public property_subscribe_url_short" data-toggle="collapse" data-target=".property_subscribe_url_short .collapse">
+                                <h2>subscribe_url_short</h2>
+                                <pre>subscribe_url_short : string</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_subscribe_url_long"> </a>
+                            <div class="element clickable property  public property_subscribe_url_long" data-toggle="collapse" data-target=".property_subscribe_url_long .collapse">
+                                <h2>subscribe_url_long</h2>
+                                <pre>subscribe_url_long : string</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_beamer_address"> </a>
+                            <div class="element clickable property  public property_beamer_address" data-toggle="collapse" data-target=".property_beamer_address .collapse">
+                                <h2>beamer_address</h2>
+                                <pre>beamer_address : string</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_visibility"> </a>
+                            <div class="element clickable property  public property_visibility" data-toggle="collapse" data-target=".property_visibility .collapse">
+                                <h2>visibility</h2>
+                                <pre>visibility : string</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>string</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_modules"> </a>
+                            <div class="element clickable property  public property_modules" data-toggle="collapse" data-target=".property_modules .collapse">
+                                <h2>modules</h2>
+                                <pre>modules : array</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_stats"> </a>
+                            <div class="element clickable property  public property_stats" data-toggle="collapse" data-target=".property_stats .collapse">
+                                <h2>stats</h2>
+                                <pre>stats : \MailChimp\Data\Stats</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>\MailChimp\Data\Stats</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property__links"> </a>
+                            <div class="element clickable property  public property__links" data-toggle="collapse" data-target=".property__links .collapse">
+                                <h2>_links</h2>
+                                <pre>_links : array&lt;mixed,\MailChimp\Data\Link&gt;</pre>
+                                <div class="labels">
+                                                                                                        </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        
+                                                    </th>
+                                                    <td>
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array&lt;mixed,\MailChimp\Data\Link&gt;</code>
                                                                             </div>
                                 </div>
                             </div>
                                                             </div>
             </div>
-            <a id="\MailChimp\Data\Location"></a>
+            <a id="\MailChimp\Models\Lists\Audience"></a>
             <ul class="breadcrumb">
                 <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
                     
     
-    <li><span class="divider">\</span><a href="../namespaces/MailChimp.Data.html">Data</a></li>
+    <li><span class="divider">\</span><a href="../namespaces/MailChimp.Models.Lists.html">Lists</a></li>
 
-                <li class="active"><span class="divider">\</span><a href="../classes/MailChimp.Data.Location.html">Location</a></li>
+                <li class="active"><span class="divider">\</span><a href="../classes/MailChimp.Models.Lists.Audience.html">Audience</a></li>
             </ul>
         </div>
     </div>

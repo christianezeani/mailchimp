@@ -39,10 +39,16 @@ class Core {
   }
 
 
+  /**
+   * @ignore
+   */
   public static function __callStatic($name, $arguments) {
     return (new static)->{$name}(...$arguments);
   }
 
+  /**
+   * @ignore
+   */
   public function __invoke(ConfigInterface &$config, MailChimpInterface &$api) {
     $this->_config = &$config;
     $this->_api = &$api;

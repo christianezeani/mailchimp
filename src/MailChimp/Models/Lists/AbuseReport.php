@@ -8,13 +8,17 @@ use MailChimp\Response\AbuseReportListResponse;
 
 
 /**
+ * Abuse Report
+ * 
+ * Manage abuse complaints for a specific list. An abuse complaint occurs when your recipient reports an email as spam in their mail program.
+ * 
  * @property float $id
  * @property string $campaign_id
  * @property string $list_id
  * @property string $email_id
  * @property string $email_address
  * @property string $date
- * @property \MailChimp\Data\Link[] $links
+ * @property Link[] $links
  */
 class AbuseReport extends Model {
 

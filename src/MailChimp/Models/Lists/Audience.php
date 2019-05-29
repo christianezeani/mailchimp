@@ -15,9 +15,9 @@ use MailChimp\Response\BatchMemberResponse;
 /**
 * @property string $id Audience List ID
 * @property string $name The name of the Audience list.
-* @property \MailChimp\Data\Contact $contact Contact information displayed in campaign footers to comply with international spam laws.
+* @property Contact $contact Contact information displayed in campaign footers to comply with international spam laws.
 * @property string $permission_reminder
-* @property \MailChimp\Data\CampaignDefaults $campaign_defaults
+* @property CampaignDefaults $campaign_defaults
 * @property string $notify_on_subscribe
 * @property string $notify_on_unsubscribe
 * @property string $date_created
@@ -28,8 +28,8 @@ use MailChimp\Response\BatchMemberResponse;
 * @property string $beamer_address
 * @property string $visibility
 * @property array $modules
-* @property \MailChimp\Data\Stats $stats
-* @property \MailChimp\Data\Link[] $_links
+* @property Stats $stats
+* @property Link[] $_links
 */
 class Audience extends Model {
 
