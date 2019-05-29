@@ -78,7 +78,11 @@ class Member extends Model {
     ],
 
     'delete' => [
-      'method' => 'DELETE'
+      'method' => 'POST',
+      'path' => '/{subscriber_hash}/actions/delete-permanent',
+      'params' => [
+        'subscriber_hash' => 'subscriber_hash()'
+      ]
     ],
 
     'all' => [

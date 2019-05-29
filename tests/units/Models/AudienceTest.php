@@ -121,7 +121,7 @@ class AudienceTest extends MailChimpTestCase {
     $audience->update_existing = true;
     $audience->members = [
       [
-        'email_address' => MAILCHIMP_TEST_EMAIL_1,
+        'email_address' => MAILCHIMP_TEST_EMAIL,
         'merge_fields' => ['FNAME' => 'Christian', 'LNAME' => 'Ezeani'],
         'status' => 'subscribed'
       ]
