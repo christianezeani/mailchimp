@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 use MailChimp\Config;
 use MailChimp\MailChimp;
-use MailChimp\Data\Error;
+use MailChimp\Response\Error;
 
 class MailChimpTestCase extends TestCase {
 

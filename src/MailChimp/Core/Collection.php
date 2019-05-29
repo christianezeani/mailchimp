@@ -28,7 +28,7 @@ class Collection extends Core implements JsonSerializable, ArrayAccess {
   }
 
   public function offsetExists($offset) {
-    return isset($this->array[$offset]);
+    return isset($this->data[$offset]);
   }
 
   public function offsetGet($offset) {
