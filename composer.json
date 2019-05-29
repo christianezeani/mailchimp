@@ -14,7 +14,7 @@
       "phpunit --testdox --testdox-html ./tests/reports/report.html --testdox-text ./tests/reports/report.txt"
     ],
     "docs": [
-      "phpdoc -d ./src/MailChimp -t ./docs/api"
+      "phpdoc -d ./src/MailChimp -t \"./docs/api\" --template=\"responsive-twig\""
     ],
     "post-autoload-dump": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
