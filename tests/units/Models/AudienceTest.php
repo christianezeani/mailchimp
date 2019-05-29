@@ -6,6 +6,7 @@ use MailChimpTestCase;
 use MailChimp\Config;
 use MailChimp\MailChimp;
 use MailChimp\Models\Audience;
+use MailChimp\Response\AudienceList;
 
 class AudienceTest extends MailChimpTestCase {
 
@@ -94,6 +95,19 @@ class AudienceTest extends MailChimpTestCase {
     self::checkAndPrintError($data);
 
     $this->assertInstanceOf(Audience::class, $data);
+  }
+
+  /**
+   * @dataProvider mailChimpInstanceProvider
+   */
+  public function testCanGetAllAudienceLists($mailChimp) {
+    $audience = $mailChimp->model(Audience::class);
+
+    $data = $audience->all();
+
+    self::checkAndPrintError($data);
+
+    $this->assertInstanceOf(AudienceList::class, $data);
   }
 
 }
