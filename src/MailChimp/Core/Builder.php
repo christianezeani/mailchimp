@@ -33,18 +33,9 @@ class Builder extends Core {
   }
 
   private function getActionPath($action) {
-    if (!array_key_exists('path', $action)) {
-      $action['path'] = '';
-    }
-
-    $params = [];
-    if (array_key_exists('params', $action)) {
-      foreach ($action['params'] as $name => $reference) {
-        $params[$name] = $this->model->{$reference};
-      }
-    }
-
-    return $this->model->getPath($action['path'], $params);
+    if (!array_key_exists('path', $action)) $action['path'] = '';
+    if (!array_key_exists('params', $action)) $action['params'] = [];
+    return $this->model->getPath($action['path'], $action['params']);
   }
 
   private function getActionData($action) {
@@ -72,10 +63,19 @@ class Builder extends Core {
 
 
   public function __call($name, $arguments) {
-    if (in_array($name, self::ACTIONS)) {
-      $action = $this->getAction($name);
+    if ($action = $this->getAction($name)) {
       $path = $this->getActionPath($action);
       $data = $this->getActionData($action);
+
+      if (array_key_exists('responseType', $action)) {
+        $this->http->as($action['responseType']);
+      } else {
+        $this->http->as($this->modelClass);
+      }
+
+      if (count($arguments)) {
+        // TODO: Parse and supply arguments
+      }
 
       return $this->http->request($action['method'], $path, $data);
     }

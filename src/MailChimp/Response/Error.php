@@ -1,5 +1,5 @@
 <?php
-namespace MailChimp\Data;
+namespace MailChimp\Response;
 
 use MailChimp\Core\Data;
 
