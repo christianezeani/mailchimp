@@ -10,7 +10,7 @@ use MailChimp\Data\Location;
 use MailChimp\Data\Link;
 use MailChimp\Data\MarketingPermission;
 
-use MailChimp\Response\MemberList;
+use MailChimp\Response\MemberListResponse;
 
 
 class Member extends Model {
@@ -83,7 +83,7 @@ class Member extends Model {
 
     'all' => [
       'method' => 'GET',
-      'responseType' => MemberList::class
+      'responseType' => MemberListResponse::class
     ],
     
     'read' => [

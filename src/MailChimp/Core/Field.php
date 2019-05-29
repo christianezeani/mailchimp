@@ -62,6 +62,7 @@ class Field extends Core {
 
   public static function cast($data, string $type = NULL) {
     if (is_null($type) || is_null($data)) return $data;
+    if (is_object($data) && get_class($data) === $type) return $data;
 
     if (\substr($type, -2) === '[]') {
       $type = \substr($type, 0, -2);

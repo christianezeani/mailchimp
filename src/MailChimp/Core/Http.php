@@ -1,7 +1,7 @@
 <?php
 namespace MailChimp\Core;
 
-use MailChimp\Response\Error;
+use MailChimp\Response\ErrorResponse;
 use MailChimp\Exceptions\InvalidClassException;
 
 
@@ -20,8 +20,8 @@ class Http extends Core {
   }
 
   public function as(string $class) {
-    if ($class === Error::class || is_subclass_of($class, Error::class)) {
-      throw new InvalidClassException("Cannot accept '$class' or a subclass of '".Error::class."'.");
+    if ($class === ErrorResponse::class || is_subclass_of($class, ErrorResponse::class)) {
+      throw new InvalidClassException("Cannot accept '$class' or a subclass of '".ErrorResponse::class."'.");
     }
 
     if (!is_subclass_of($class, Data::class)) {
@@ -134,7 +134,7 @@ class Http extends Core {
       }
       return $response;
     } else {
-      $response = $this->own(Error::class, $response);
+      $response = $this->own(ErrorResponse::class, $response);
       // print_r($response);
       return $response;
     }

@@ -11,7 +11,7 @@ use MailChimp\Models\Audience;
  * @property \MailChimp\Data\Link $_links
  * @property int $total_items
  */
-class AudienceList extends Data {
+class AudienceListResponse extends Data {
 
   protected $fields = [
     'lists' => ['type' => Audience::class.'[]'],
