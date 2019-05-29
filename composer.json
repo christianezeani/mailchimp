@@ -17,9 +17,7 @@
       "phpdoc -d ./src/MailChimp -t \"./docs/api\" --template=\"responsive-twig\""
     ],
     "post-autoload-dump": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-      "composer test",
-      "composer docs"
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ]
   },
   "require": {
