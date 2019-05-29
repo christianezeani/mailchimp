@@ -118,16 +118,17 @@ class Model extends Data implements ModelInterface {
       $param = $match[1];
 
       if (array_key_exists($param, $params)) {
-        if (substr($param, -2) === '()') {
-          $param = substr($param, 0, -2);
-          if (method_exists($this, $param)) {
-            return $this->{$param}();
+        $reference = $params[$param];
+
+        if (\substr($reference, -2) === '()') {
+          $reference = substr($reference, 0, -2);
+          if (method_exists($this, $reference)) {
+            return $this->{$reference}();
           }
 
           return '';
         }
 
-        $reference = $params[$param];
         return $this->{$reference};
       }
 
