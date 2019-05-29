@@ -3,6 +3,8 @@
 use MailChimp\Config;
 use MailChimp\MailChimp;
 
+use MailChimp\Models\Lists\Audience;
+
 class MailChimpTest extends MailChimpTestCase {
 
   public function instanceProvider() {
@@ -46,10 +48,7 @@ class MailChimpTest extends MailChimpTestCase {
    * @dataProvider instanceProvider
    */
   public function testCanReturnAudienceModel(MailChimp $instance) {
-    $this->assertInstanceOf(
-      \MailChimp\Models\Audience::class,
-      $instance->audience()
-    );
+    $this->assertInstanceOf(Audience::class, $instance->audience());
   }
 
   /**

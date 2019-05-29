@@ -1,5 +1,5 @@
 <?php
-namespace MailChimp\Models;
+namespace MailChimp\Models\Lists;
 
 use MailChimp\Core\Model;
 

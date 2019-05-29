@@ -3,21 +3,22 @@ namespace MailChimp\Response;
 
 use MailChimp\Core\Data;
 use MailChimp\Data\Link;
-use MailChimp\Models\Lists\Member;
+use MailChimp\Models\Lists\AbuseReport;
+
 
 /**
- * @property \MailChimp\Models\Lists\Member[] $members
+ * @property \MailChimp\Models\Lists\AbuseReport[] $abuse_reports
  * @property string $list_id
+ * @property int $total_items
  * @property \MailChimp\Data\Link[] $_links
- * @property float $total_items
  */
-class MemberListResponse extends Data {
+class AbuseReportListResponse extends Data {
 
   protected $fields = [
-    'members' => ['type' => Member::class.'[]'],
+    'abuse_reports' => ['type' => AbuseReport::class.'[]'],
     'list_id' => ['type' => 'string'],
+    'total_items' => ['type' => 'int'],
     '_links' => ['type' => Link::class.'[]'],
-    'total_items' => ['type' => 'float'],
   ];
 
 }
