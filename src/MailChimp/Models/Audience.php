@@ -8,6 +8,8 @@ use MailChimp\Data\CampaignDefaults;
 use MailChimp\Data\Stats;
 use MailChimp\Data\Link;
 
+use MailChimp\Response\AudienceList;
+
 
 /**
 * @property string $id Audience List ID
@@ -106,7 +108,8 @@ class Audience extends Model {
     ],
 
     'all' => [
-      'method' => 'GET'
+      'method' => 'GET',
+      'responseType' => AudienceList::class
     ],
 
     'read' => [
@@ -117,4 +120,5 @@ class Audience extends Model {
   ];
   
 }
+
 

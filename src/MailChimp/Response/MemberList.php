@@ -11,7 +11,7 @@ use MailChimp\Model\Member;
  * @property \MailChimp\Data\Link[] $_links
  * @property float $total_items
  */
-class MemberListResponse extends Data {
+class MemberList extends Data {
 
   protected $fields = [
     'members' => ['type' => Member::class.'[]'],

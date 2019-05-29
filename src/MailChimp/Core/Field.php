@@ -68,7 +68,7 @@ class Field extends Core {
 
       $value = [];
 
-      if (is_array($type) && array_keys($type) === range(0, count($type) - 1)) {
+      if (is_array($data) && array_keys($data) === range(0, count($data) - 1)) {
         foreach ($data as $item) {
           $value[] = self::cast($item, $type);
         }
@@ -82,7 +82,7 @@ class Field extends Core {
         return new $type($data);
       }
 
-      settype($data, $type);
+      @settype($data, $type);
       return $data;
     }
   }
