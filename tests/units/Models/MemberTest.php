@@ -49,6 +49,41 @@ class MemberTest extends MailChimpTestCase {
   /**
    * @dataProvider mailChimpInstanceProvider
    */
+  public function testCanEditMember($mailChimp) {
+    $member = $mailChimp->model(Member::class, [
+      'list_id' => MAILCHIMP_LIST_ID,
+      'email_address' => MAILCHIMP_TEST_EMAIL,
+      'status' => 'unsubscribed'
+    ]);
+
+    $data = $member->edit();
+
+    self::checkAndPrintError($data);
+
+    $this->assertInstanceOf(Member::class, $data);
+  }
+
+  /**
+   * @dataProvider mailChimpInstanceProvider
+   */
+  public function testCanAddOrEditMember($mailChimp) {
+    $member = $mailChimp->model(Member::class, [
+      'list_id' => MAILCHIMP_LIST_ID,
+      'email_address' => MAILCHIMP_TEST_EMAIL_2,
+      'status_if_new' => 'subscribed',
+      'status' => 'unsubscribed'
+    ]);
+
+    $data = $member->addOrEdit();
+
+    self::checkAndPrintError($data);
+
+    $this->assertInstanceOf(Member::class, $data);
+  }
+
+  /**
+   * @dataProvider mailChimpInstanceProvider
+   */
   public function testCanReadMember($mailChimp) {
     $audience = $mailChimp->model(Member::class, [
       'list_id' => MAILCHIMP_LIST_ID,
