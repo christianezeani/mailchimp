@@ -52,6 +52,9 @@ class Model extends Data implements ModelInterface {
   private $builder;
 
 
+  /**
+   * @ignore
+   */
   protected function __initialize__() {
     $this->builder = $this->own(Builder::class, $this);
 
@@ -149,7 +152,7 @@ class Model extends Data implements ModelInterface {
    * Returns an array of action fields for an action
    *
    * @param string $action
-   * @return array
+   * @return ActionField[]
    */
   public function getActionFields($action) {
     $info = $this->getAction($action);
@@ -183,10 +186,16 @@ class Model extends Data implements ModelInterface {
 
 
 
+  /**
+   * @ignore
+   */
   public function __call($name, $arguments) {
     return $this->builder->{$name}(...$arguments);
   }
 
+  /**
+   * @ignore
+   */
   public function __get($name) {
     if (parent::hasField($name)) return parent::__get($name);
 
@@ -197,6 +206,9 @@ class Model extends Data implements ModelInterface {
     return NULL;
   }
 
+  /**
+   * @ignore
+   */
   public function __set($name, $value) {
     if (parent::hasField($name)) {
       parent::__set($name, $value);

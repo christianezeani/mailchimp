@@ -4,8 +4,10 @@ namespace MailChimp\Core;
 use MailChimp\Exceptions\InvalidDataException;
 use MailChimp\Exceptions\InvalidFieldReferenceException;
 
+use JsonSerializable;
 
-class Data extends Core {
+
+class Data extends Core implements JsonSerializable {
 
   /**
    * Fields for the model
@@ -46,6 +48,10 @@ class Data extends Core {
 
       $info = $field;
     }
+  }
+
+  public function jsonSerialize() {
+    return $this->data;
   }
 
   public function merge($data) {

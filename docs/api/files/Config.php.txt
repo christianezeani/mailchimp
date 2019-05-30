@@ -14,8 +14,15 @@ class Config implements ConfigInterface {
     if (!empty($key)) $this->setKey($key);
   }
 
-  public function endpoint(): string {
-    return $this->_endpoint;
+  public function endpoint(string $path = NULL): string {
+    $endpoint = $this->_endpoint;
+
+    if (!empty($path)) {
+      if (substr($path, 0, 1) !== '/') $path = '/' . $path;
+      $endpoint .= $path;
+    }
+
+    return $endpoint;
   }
 
   public function setKey($key) {

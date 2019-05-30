@@ -20,13 +20,13 @@ class Contact extends Data {
    * @ignore
    */
   protected $fields = [
-    'company' => ['type' => 'string'],
-    'address1' => ['type' => 'string'],
+    'company' => ['type' => 'string', 'required' => true],
+    'address1' => ['type' => 'string', 'required' => true],
     'address2' => ['type' => 'string'],
-    'city' => ['type' => 'string'],
-    'state' => ['type' => 'string'],
-    'zip' => ['type' => 'string'],
-    'country' => ['type' => 'string'],
+    'city' => ['type' => 'string', 'required' => true],
+    'state' => ['type' => 'string', 'required' => true],
+    'zip' => ['type' => 'string', 'required' => true],
+    'country' => ['type' => 'string', 'required' => true],
     'phone' => ['type' => 'string']
   ];
 

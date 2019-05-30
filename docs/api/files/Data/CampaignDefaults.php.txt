@@ -15,10 +15,10 @@ class CampaignDefaults extends Data {
    * @ignore
    */
   protected $fields = [
-    'from_name' => ['type' => 'string'],
-    'from_email' => ['type' => 'string'],
-    'subject' => ['type' => 'string'],
-    'language' => ['type' => 'string', 'default' => 'en']
+    'from_name' => ['type' => 'string', 'required' => true],
+    'from_email' => ['type' => 'string', 'required' => true],
+    'subject' => ['type' => 'string', 'required' => true],
+    'language' => ['type' => 'string', 'required' => true, 'default' => 'en']
   ];
 
 }
