@@ -19,3 +19,5 @@ define('MAILCHIMP_TEST_EMAIL_2', getenv('MAILCHIMP_TEST_EMAIL_2'));
 
 
 require_once(__DIR__ . '/includes/MailChimpTestCase.php');
+
+MailChimpTestCase::initialize();
