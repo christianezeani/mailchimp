@@ -8,6 +8,8 @@ use MailChimp\Response\ActivityListResponse;
 
 
 /**
+ * Get recent daily, aggregated activity stats for your list. For example, view unsubscribes, signups, total emails sent, opens, clicks, and more, for up to 180 days.
+ * 
  * @property string $day The date for the activity summary.
  * @property int $emails_sent The total number of emails sent on the date for the activity summary.
  * @property int $unique_opens The number of unique opens.

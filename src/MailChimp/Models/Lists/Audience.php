@@ -13,24 +13,32 @@ use MailChimp\Response\BatchMemberResponse;
 
 
 /**
-* @property string $id Audience List ID
-* @property string $name The name of the Audience list.
-* @property Contact $contact Contact information displayed in campaign footers to comply with international spam laws.
-* @property string $permission_reminder
-* @property CampaignDefaults $campaign_defaults
-* @property string $notify_on_subscribe
-* @property string $notify_on_unsubscribe
-* @property string $date_created
-* @property int $list_rating
-* @property bool $email_type_option
-* @property string $subscribe_url_short
-* @property string $subscribe_url_long
-* @property string $beamer_address
-* @property string $visibility
-* @property array $modules
-* @property Stats $stats
-* @property Link[] $_links
-*/
+ * A Mailchimp list is a powerful and flexible tool that helps you manage your contacts. Learn how to get started with lists in Mailchimp.
+ * 
+ * @property string $id
+ *  Audience List ID
+ * 
+ * @property string $name
+ *  The name of the Audience list.
+ * 
+ * @property Contact $contact
+ *  Contact information displayed in campaign footers to comply with international spam laws.
+ * 
+ * @property string $permission_reminder
+ * @property CampaignDefaults $campaign_defaults
+ * @property string $notify_on_subscribe
+ * @property string $notify_on_unsubscribe
+ * @property string $date_created
+ * @property int $list_rating
+ * @property bool $email_type_option
+ * @property string $subscribe_url_short
+ * @property string $subscribe_url_long
+ * @property string $beamer_address
+ * @property string $visibility
+ * @property array $modules
+ * @property Stats $stats
+ * @property Link[] $_links
+ */
 class Audience extends Model {
 
   /**
@@ -39,8 +47,8 @@ class Audience extends Model {
   protected $path = '/lists';
   
   /**
-  * @ignore
-  */
+   * @ignore
+   */
   protected $fields = [
     'id' => ['type' => 'string'],
     'name' => ['type' => 'string'],

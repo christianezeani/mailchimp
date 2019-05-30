@@ -13,6 +13,11 @@ use MailChimp\Data\MarketingPermission;
 use MailChimp\Response\MemberListResponse;
 
 
+/**
+ * Manage members of a specific Mailchimp list, including currently subscribed, unsubscribed, and bounced members.
+ * 
+ * 
+ */
 class Member extends Model {
 
   /**

@@ -125,6 +125,12 @@
         </a>
     </li>
 
+                                                                                                        <li class="method public">
+        <a href="#method_all" title="all :: ">
+            <span class="description"></span><pre>all</pre>
+        </a>
+    </li>
+
                                                                                                                                                                 <li class="method public inherited">
         <a href="#method_clear" title="clear :: ">
             <span class="description"></span><pre>clear</pre>
@@ -185,7 +191,13 @@
         </a>
     </li>
 
-                                                                                                                                                                                                                        <li class="method public inherited">
+                                                                                                                                                                                                                        <li class="method public">
+        <a href="#method_read" title="read :: ">
+            <span class="description"></span><pre>read</pre>
+        </a>
+    </li>
+
+                                                                                                        <li class="method public inherited">
         <a href="#method_reference" title="reference :: ">
             <span class="description"></span><pre>reference</pre>
         </a>
@@ -195,7 +207,7 @@
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                <li class="method protected inherited">
+                                                                                                                                                    <li class="method protected inherited">
                             <a href="#method_api" title="api :: ">
                                 <span class="description"></span><pre>api</pre>
                             </a>
@@ -210,7 +222,7 @@
                                 <span class="description"></span><pre>own</pre>
                             </a>
                         </li>
-                                                                                                                                                        <li class="method protected inherited">
+                                                                                                                                                                                            <li class="method protected inherited">
                             <a href="#method_setApi" title="setApi :: ">
                                 <span class="description"></span><pre>setApi</pre>
                             </a>
@@ -224,7 +236,7 @@
         </li>
         <li class="nav-header private">» Private
             <ul>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li class="method private inherited">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li class="method private inherited">
                             <a href="#method_initialize" title="initialize :: ">
                                 <span class="description"></span><pre>initialize</pre>
                             </a>
@@ -234,7 +246,7 @@
                                 <span class="description"></span><pre>parseActionPath</pre>
                             </a>
                         </li>
-                                                                                                                                                            </ul>
+                                                                                                                                                                                                </ul>
         </li>
         <li class="nav-header">
             <i class="icon-custom icon-constant"></i> Constants
@@ -252,13 +264,13 @@
                 <small style="display: block; text-align: right">
                                             Extends <a href="../classes/MailChimp.Core.Model.html">\MailChimp\Core\Model</a>
                                                         </small>
-                <p class="short_description">Abuse Report</p>
+                <p class="short_description">Manage abuse complaints for a specific list. An abuse complaint occurs when your recipient reports an email as spam in their mail program.</p>
                 <div class="details">
                     <div class="long_description">
-                        <p>Manage abuse complaints for a specific list. An abuse complaint occurs when your recipient reports an email as spam in their mail program.</p>
+                        
                     </div>
                     <table class="table table-bordered">
-                                                                                                                                        <tr>
+                                                                                                                                                                                            <tr>
                                     <th>
                                         package
                                                                             </th>
@@ -267,7 +279,7 @@
                                                                                 <p>Default</p>
                                     </td>
                                 </tr>
-                                                                                                                                                                                </table>
+                                                                                                                            </table>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
                                                                 <a id="method___construct"></a>
@@ -305,6 +317,28 @@
                                                 <code>array</code><p></p>
                                             </div>
                                                                             
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_all"></a>
+                        <div class="element clickable method public  method_all" data-toggle="collapse" data-target=".method_all .collapse">
+                            <h2>all</h2>
+                            <pre>all() : \MailChimp\Response\AbuseReportListResponse</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Get all abuse reports for a specific list.</p></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>\MailChimp\Response\AbuseReportListResponse</code><p></p>
                                                                     </div>
                             </div>
 
@@ -814,6 +848,28 @@
                                                 <code></code><p></p>
                                             </div>
                                                                             
+                                                                    </div>
+                            </div>
+
+                        </div>
+                                            <a id="method_read"></a>
+                        <div class="element clickable method public  method_read" data-toggle="collapse" data-target=".method_read .collapse">
+                            <h2>read</h2>
+                            <pre>read() : \MailChimp\Models\Lists\AbuseReport</pre>
+                            <div class="labels">
+                                                                                                                                                                                            </div>
+
+                            
+                            <div class="row collapse">
+                                <div class="detail-description">
+                                    <div class="long_description"><p>Get details about a specific abuse report.</p></div>
+
+                                    <table class="table">
+                                                                                                                    </table>
+
+                                    
+                                                                            <h3>Response</h3>
+                                        <code>\MailChimp\Models\Lists\AbuseReport</code><p></p>
                                                                     </div>
                             </div>
 
@@ -1445,7 +1501,7 @@
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Thu, 30 May 2019 12:21:57 +0200.<br/>
+            generated on Thu, 30 May 2019 12:41:49 +0200.<br/>
     </footer>
     </body>
 </html>
