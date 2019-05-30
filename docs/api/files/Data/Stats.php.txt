@@ -34,6 +34,8 @@ class Stats extends Data {
     'merge_field_count' => ['type' => 'int'],
     'avg_sub_rate' => ['type' => 'float'],
     'avg_unsub_rate' => ['type' => 'float'],
+    'avg_open_rate' => ['type' => 'float'],
+    'avg_click_rate' => ['type' => 'float'],
     'target_sub_rate' => ['type' => 'float'],
     'open_rate' => ['type' => 'float'],
     'click_rate' => ['type' => 'float'],
