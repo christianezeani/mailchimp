@@ -17,6 +17,13 @@ class Model extends Data implements ModelInterface {
   protected $path = '/';
 
   /**
+   * Path Parameters
+   *
+   * @var array
+   */
+  protected $params = [];
+
+  /**
    * Action Fields Configurations
    * 
    * @var array
@@ -109,6 +116,7 @@ class Model extends Data implements ModelInterface {
     }
 
     if (!is_array($params)) $params = [];
+    $params = array_merge($this->params, $params);
 
     $closure = $this->parseActionPath($params);
     $path = preg_replace_callback("/\{([\w]+)\}/", $closure, $path);
