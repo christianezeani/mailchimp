@@ -8,26 +8,50 @@ use MailChimp\Response\ErrorResponse;
 
 class MailChimpTestCase extends TestCase {
 
-  protected function mailChimpInstance() {
+  protected static $mailChimp;
+
+  public static function initialize() {
     $config = new Config(MAILCHIMP_API_KEY);
-    return new MailChimp($config);
+    self::$mailChimp = new MailChimp($config);
+  }
+
+  protected function mailChimpInstance() {
+    return self::$mailChimp;
+  }
+
+  public function mailChimpInstanceProvider() {
+    return [
+      'MailChimp Instance' => [$this->mailChimpInstance()]
+    ];
+  }
+
+  protected static function getErrorDetails($data) {
+    $message = '';
+
+    if ($data instanceof ErrorResponse) {
+      $message .= "------------------------------\n";
+      $message .= "ERROR: \n";
+      $message .= "- {$data->title} \n";
+      $message .= "- {$data->detail} \n";
+
+      if (isset($data->errors)) {
+        $message .= "- Error List: \n";
+
+        ob_start();
+        print_r($data->errors);
+        
+        $message .= ob_get_clean();
+        $message .= "\n";
+      }
+
+      $message .= "------------------------------\n\n";
+    }
+
+    return $message;
   }
 
   protected static function checkAndPrintError($data) {
-    if ($data instanceof ErrorResponse) {
-      echo "------------------------------\n";
-      echo "ERROR: \n";
-      echo "- {$data->title} \n";
-      echo "- {$data->detail} \n";
-
-      if (isset($data->errors)) {
-        echo "- Error List: \n";
-        print_r($data->errors);
-        echo "\n";
-      }
-
-      echo "------------------------------\n\n";
-    }
+    echo self::getErrorDetails($data);
   }
 
 }
