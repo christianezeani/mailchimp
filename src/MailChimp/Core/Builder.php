@@ -44,12 +44,14 @@ class Builder extends Core {
     if (array_key_exists('fields', $action)) {
       foreach ($action['fields'] as $name => $field) {
         $value = $this->model->{$name};
+
         if (is_null($value)) {
           if ($field->required()) {
             throw new FieldRequiredException("'$name' field is required");
           }
           continue;
         }
+
         $data[$name] = $value;
       }
     }
@@ -73,8 +75,20 @@ class Builder extends Core {
         $this->http->as($this->modelClass);
       }
 
-      if (count($arguments)) {
-        // TODO: Parse and supply arguments
+      $query = [];
+
+      if (array_key_exists(0, $arguments) && is_array($arguments[0])) {
+        $query = array_merge($query, $arguments[0]);
+      }
+
+      if ($action['method'] === 'GET') {
+        $data = $query;
+      } else {
+        $data = array_merge($data, $query);
+      }
+
+      if (array_key_exists(1, $arguments) && $arguments[1] === true) {
+        var_dump($path);
       }
 
       return $this->http->request($action['method'], $path, $data);
