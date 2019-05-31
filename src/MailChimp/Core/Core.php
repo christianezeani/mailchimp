@@ -35,7 +35,7 @@ class Core {
     }
 
     $obj = new $class(...$args);
-    return $obj($this->_config, $this->_api);
+    return $obj($this->_config, $this->_api, ...$args);
   }
 
 
@@ -49,12 +49,12 @@ class Core {
   /**
    * @ignore
    */
-  public function __invoke(ConfigInterface &$config, MailChimpInterface &$api) {
+  public function __invoke(ConfigInterface &$config, MailChimpInterface &$api, ...$args) {
     $this->_config = &$config;
     $this->_api = &$api;
 
     if (method_exists($this, '__initialize__')) {
-      $this->__initialize__();
+      $this->__initialize__(...$args);
     }
 
     return $this;

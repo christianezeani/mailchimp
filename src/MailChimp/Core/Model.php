@@ -40,9 +40,9 @@ class Model extends Data implements ModelInterface {
   /**
    * Data holder for unreferenced action fields
    *
-   * @var array
+   * @var object
    */
-  private $data = [];
+  private $data;
 
   /**
    * Info for unreferenced action fields
@@ -62,7 +62,7 @@ class Model extends Data implements ModelInterface {
   /**
    * @ignore
    */
-  protected function __initialize__() {
+  protected function __initialize__(array $data = NULL) {
     $this->builder = $this->own(Builder::class, $this);
 
     $this->data = new \stdClass;
@@ -94,7 +94,12 @@ class Model extends Data implements ModelInterface {
           $field->reference($info['reference']);
         } else {
           $this->_fields[$name] = $field;
-          $this->data->{$name} = NULL;
+
+          if (is_array($data) && array_key_exists($name, $data)) {
+            $this->__set($name, $data[$name]);
+          } else {
+            $this->data->{$name} = NULL;
+          }
         }
 
         $info = $field;
@@ -143,11 +148,13 @@ class Model extends Data implements ModelInterface {
         return $this->{$reference};
       }
 
-      if (isset($this->{$param})) {
-        return $this->{$param};
-      }
+      return $this->{$param};
 
-      return '';
+      // if (isset($this->{$param})) {
+      //   return $this->{$param};
+      // }
+
+      // return '';
     };
   }
 
@@ -205,7 +212,9 @@ class Model extends Data implements ModelInterface {
    * @ignore
    */
   public function __get($name) {
-    if (parent::hasField($name)) return parent::__get($name);
+    if (parent::hasField($name)) {
+      return parent::__get($name);
+    }
 
     if (isset($this->data->{$name})) {
       return $this->data->{$name};
