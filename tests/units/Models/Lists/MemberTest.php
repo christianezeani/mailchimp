@@ -20,8 +20,8 @@ class MemberTest extends MailChimpTestCase {
   public function deleteMembersProvider() {
     $instance = $this->mailChimpInstance();
     return [
-      MAILCHIMP_TEST_EMAIL => [$instance, MAILCHIMP_TEST_EMAIL],
-      MAILCHIMP_TEST_EMAIL_2 => [$instance, MAILCHIMP_TEST_EMAIL_2]
+      MAILCHIMP_TEST_EMAIL_2 => [$instance, MAILCHIMP_TEST_EMAIL_2],
+      MAILCHIMP_TEST_EMAIL_3 => [$instance, MAILCHIMP_TEST_EMAIL_3]
     ];
   }
 
@@ -52,7 +52,7 @@ class MemberTest extends MailChimpTestCase {
   public function testCanEditMember($mailChimp) {
     $member = $mailChimp->model(Member::class, [
       'list_id' => MAILCHIMP_LIST_ID,
-      'email_address' => MAILCHIMP_TEST_EMAIL,
+      'email_address' => MAILCHIMP_TEST_EMAIL_2,
       'status' => 'unsubscribed'
     ]);
 
@@ -69,7 +69,7 @@ class MemberTest extends MailChimpTestCase {
   public function testCanAddOrEditMember($mailChimp) {
     $member = $mailChimp->model(Member::class, [
       'list_id' => MAILCHIMP_LIST_ID,
-      'email_address' => MAILCHIMP_TEST_EMAIL_2,
+      'email_address' => MAILCHIMP_TEST_EMAIL_3,
       'status_if_new' => 'subscribed',
       'status' => 'unsubscribed'
     ]);
@@ -87,7 +87,7 @@ class MemberTest extends MailChimpTestCase {
   public function testCanReadMember($mailChimp) {
     $audience = $mailChimp->model(Member::class, [
       'list_id' => MAILCHIMP_LIST_ID,
-      'email_address' => MAILCHIMP_TEST_EMAIL
+      'email_address' => MAILCHIMP_TEST_EMAIL_2
     ]);
 
     $data = $audience->read();
