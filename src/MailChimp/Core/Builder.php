@@ -67,13 +67,6 @@ class Builder extends Core {
   public function __call($name, $arguments) {
     if ($action = $this->getAction($name)) {
       $path = $this->getActionPath($action);
-      $data = $this->getActionData($action);
-
-      if (array_key_exists('responseType', $action)) {
-        $this->http->as($action['responseType']);
-      } else {
-        $this->http->as($this->modelClass);
-      }
 
       $query = [];
 
@@ -81,10 +74,18 @@ class Builder extends Core {
         $query = array_merge($query, $arguments[0]);
       }
 
+      $this->model->merge($query);
+
       if ($action['method'] === 'GET') {
         $data = $query;
       } else {
-        $data = array_merge($data, $query);
+        $data = $this->getActionData($action);
+      }
+
+      if (array_key_exists('responseType', $action)) {
+        $this->http->as($action['responseType']);
+      } else {
+        $this->http->as($this->modelClass);
       }
 
       if (array_key_exists(1, $arguments) && $arguments[1] === true) {
