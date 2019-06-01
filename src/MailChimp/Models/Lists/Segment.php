@@ -6,6 +6,7 @@ use MailChimp\Data\Link;
 use MailChimp\Data\SegmentOptions;
 use MailChimp\Response\SegmentListResponse;
 use MailChimp\Response\SegmentBatchResponse;
+use MailChimp\Response\SegmentMemberListResponse;
 
 
 /**
@@ -122,6 +123,32 @@ class Segment extends Model {
       'responseType' => SegmentBatchResponse::class
     ],
 
+    'allMembers' => [
+      'method' => 'GET',
+      'path' => '/{segment_id}/members',
+      'responseType' => SegmentMemberListResponse::class
+    ],
+
+    'addMember' => [
+      'method' => 'POST',
+      'path' => '/{segment_id}/members',
+      'fields' => [
+        'email_address' => ['type' => 'string', 'required' => true]
+      ],
+      'responseType' => Member::class
+    ],
+
+    'deleteMember' => [
+      'method' => 'DELETE',
+      'path' => '/{segment_id}/members/{subscriber_hash}',
+      'params' => [
+        'subscriber_hash' => 'subscriber_hash()'
+      ],
+      'fields' => [
+        'email_address' => ['type' => 'string', 'required' => true]
+      ]
+    ],
+
     'all' => [
       'method' => 'GET',
       'responseType' => SegmentListResponse::class
@@ -137,6 +164,11 @@ class Segment extends Model {
       'path' => '/{segment_id}'
     ],
   ];
+
+  protected function subscriber_hash() {
+    $email = strtolower($this->email_address);
+    return ($email) ? hash('md5', $email) : NULL;
+  }
 
 }
 

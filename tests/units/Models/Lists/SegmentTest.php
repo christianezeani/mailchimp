@@ -4,8 +4,10 @@ namespace Models\Lists;
 use MailChimpTestCase;
 
 use MailChimp\Models\Lists\Segment;
+use MailChimp\Models\Lists\Member;
 use MailChimp\Response\SegmentListResponse;
 use MailChimp\Response\SegmentBatchResponse;
+use MailChimp\Response\SegmentMemberListResponse;
 
 
 class SegmentTest extends MailChimpTestCase {
@@ -77,7 +79,44 @@ class SegmentTest extends MailChimpTestCase {
   }
 
   /**
-   * @depends testCanEditSegment
+   * @depends testCanAddOrRemoveMembers
+   */
+  public function testCanGetAllMembers($segment) {
+    $data = $segment->allMembers();
+
+    $this->assertInstanceOf(SegmentMemberListResponse::class, $data, self::getErrorDetails($data));
+
+    return $segment;
+  }
+
+  /**
+   * @depends testCanGetAllMembers
+   */
+  public function testCanAddMember($segment) {
+    $data = $segment->addMember([
+      'email_address' => MAILCHIMP_TEST_EMAIL
+    ]);
+
+    $this->assertInstanceOf(Member::class, $data, self::getErrorDetails($data));
+
+    return $segment;
+  }
+
+  /**
+   * @depends testCanAddMember
+   */
+  public function testCanDeleteMember($segment) {
+    $data = $segment->deleteMember([
+      'email_address' => MAILCHIMP_TEST_EMAIL
+    ]);
+
+    $this->assertEquals(NULL, $data, self::getErrorDetails($data));
+
+    return $segment;
+  }
+
+  /**
+   * @depends testCanDeleteMember
    */
   public function testCanDeleteSegment($segment) {
     $data = $segment->delete();
