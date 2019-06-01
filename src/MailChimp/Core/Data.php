@@ -57,10 +57,14 @@ class Data extends Core implements JsonSerializable {
   public function merge($data) {
     if (!is_array($data)) return;
 
-    foreach ($this->fields as $name => $type) {
-      if (!array_key_exists($name, $data)) continue;
-      $this->__set($name, $data[$name]);
+    foreach ($data as $name => $value) {
+      $this->__set($name, $value);
     }
+
+    // foreach ($this->fields as $name => $type) {
+    //   if (!array_key_exists($name, $data)) continue;
+    //   $this->__set($name, $data[$name]);
+    // }
   }
 
   /**

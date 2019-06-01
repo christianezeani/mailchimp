@@ -37,11 +37,10 @@ class MailChimpTestCase extends TestCase {
       if (isset($data->errors)) {
         $message .= "- Error List: \n";
 
-        ob_start();
-        print_r($data->errors);
-        
-        $message .= ob_get_clean();
-        $message .= "\n";
+        foreach ($data->errors as $error) {
+          $message .= sprintf("---> '%s' => %s", $error['field'], $error['message']);
+          $message .= "\n";
+        }
       }
 
       $message .= "------------------------------\n\n";
