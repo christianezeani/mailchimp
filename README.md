@@ -69,6 +69,6 @@ Visit the [Project site](https://christianezeani.github.io/mailchimp/). If you'r
 
 Examples of how to use MailChimp PHP Wrapper for common scenarios can be found in the [examples](https://christianezeani.github.io/mailchimp/examples/) page.
 
-A Complete generated API documentation is [available online](christianezeani.github.io/mailchimp/).
+A Complete generated API documentation is [available online](https://christianezeani.github.io/mailchimp/api/).
 
 You can generate complete API-level documentation by running `composer docs` in the top-level folder, and documentation will appear in the `docs/api` folder, though you'll need to have [PHPDocumentor](http://www.phpdoc.org/) installed. You may find the unit tests a good source of how to do various operations such as creating audience, subscribing and unsubscribing members, and many more.
