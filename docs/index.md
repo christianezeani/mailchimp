@@ -1,2 +1,2 @@
-# MailChimp Wrapper
+# MailChimp PHP Wrapper
 
