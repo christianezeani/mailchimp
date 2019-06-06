@@ -9,23 +9,16 @@ use MailChimp\Response\AbuseReportListResponse;
 
 class AbuseReportTest extends MailChimpTestCase {
 
-  public function listIdProvider() {
-    $instance = $this->mailChimpInstance();
-    return [
-      MAILCHIMP_LIST_ID => [$instance, MAILCHIMP_LIST_ID]
-    ];
-  }
-
-  public function testCanBeCreated() {
+  public function testCanCreateInstance() {
     $this->assertInstanceOf(AbuseReport::class, new AbuseReport());
   }
 
-  /**
-   * @dataProvider listIdProvider
-   */
-  public function testCanGetAllReports($mailChimp, $listId) {
+  public function testCanGetAllReports() {
+    $mailChimp = $this->mailChimpInstance();
+    $audience = $this->audience();
+
     $report = $mailChimp->model(AbuseReport::class, [
-      'list_id' => $listId
+      'list_id' => $audience->id
     ]);
 
     $data = $report->all();

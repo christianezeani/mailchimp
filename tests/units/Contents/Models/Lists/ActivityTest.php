@@ -9,23 +9,16 @@ use MailChimp\Response\ActivityListResponse;
 
 class ActivityTest extends MailChimpTestCase {
 
-  public function listIdProvider() {
-    $instance = $this->mailChimpInstance();
-    return [
-      MAILCHIMP_LIST_ID => [$instance, MAILCHIMP_LIST_ID]
-    ];
-  }
-
-  public function testCanBeCreated() {
+  public function testCanCreateInstance() {
     $this->assertInstanceOf(Activity::class, new Activity());
   }
 
-  /**
-   * @dataProvider listIdProvider
-   */
-  public function testCanGetActivities($mailChimp, $listId) {
+  public function testCanGetActivities() {
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
     $activity = $mailChimp->model(Activity::class, [
-      'list_id' => $listId
+      'list_id' => $audience->id
     ]);
 
     $data = $activity->get();

@@ -13,8 +13,11 @@ use MailChimp\Response\SegmentMemberListResponse;
 class SegmentTest extends MailChimpTestCase {
 
   public function testCanGetAllSegments() {
-    $segment = self::$mailChimp->model(Segment::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $segment = $mailChimp->model(Segment::class, [
+      'list_id' => $audience->id
     ]);
 
     $data = $segment->all();
@@ -23,8 +26,11 @@ class SegmentTest extends MailChimpTestCase {
   }
 
   public function testCanCreateSegment() {
-    $segment = self::$mailChimp->model(Segment::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $segment = $mailChimp->model(Segment::class, [
+      'list_id' => $audience->id,
       'name' => 'Demo Segment',
       'static_segment' => [MAILCHIMP_TEST_EMAIL]
     ]);
@@ -69,9 +75,9 @@ class SegmentTest extends MailChimpTestCase {
    * @depends testCanEditSegment
    */
   public function testCanAddOrRemoveMembers($segment) {
-    $segment->members_to_remove = [MAILCHIMP_TEST_EMAIL];
-
-    $data = $segment->batch();
+    $data = $segment->batch([
+      'members_to_remove' => [MAILCHIMP_TEST_EMAIL]
+    ]);
 
     $this->assertInstanceOf(SegmentBatchResponse::class, $data, self::getErrorDetails($data));
 

@@ -10,8 +10,11 @@ use MailChimp\Response\LocationListResponse;
 class LocationTest extends MailChimpTestCase {
 
   public function testCanGetAllLocations() {
-    $location = self::$mailChimp->model(Location::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $location = $mailChimp->model(Location::class, [
+      'list_id' => $audience->id
     ]);
 
     $data = $location->all();
@@ -20,3 +23,4 @@ class LocationTest extends MailChimpTestCase {
   }
 
 }
+

@@ -9,6 +9,8 @@ use MailChimp\Response\ErrorResponse;
 class MailChimpTestCase extends TestCase {
 
   protected static $mailChimp;
+  
+  protected static $audience;
 
   public static function initialize() {
     $config = new Config(MAILCHIMP_API_KEY);
@@ -16,7 +18,11 @@ class MailChimpTestCase extends TestCase {
   }
 
   protected function mailChimpInstance() {
-    return self::$mailChimp;
+    return static::$mailChimp;
+  }
+
+  protected function audience() {
+    return static::$audience;
   }
 
   public function mailChimpInstanceProvider() {
@@ -50,7 +56,7 @@ class MailChimpTestCase extends TestCase {
   }
 
   protected static function checkAndPrintError($data) {
-    echo self::getErrorDetails($data);
+    echo static::getErrorDetails($data);
   }
 
 }

@@ -10,8 +10,11 @@ use MailChimp\Response\SignupFormListResponse;
 class SignupFormTest extends MailChimpTestCase {
 
   public function testCanGetAllSignupForms() {
-    $signupForm = self::$mailChimp->model(SignupForm::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $signupForm = $mailChimp->model(SignupForm::class, [
+      'list_id' => $audience->id
     ]);
 
     $data = $signupForm->all();
@@ -20,8 +23,11 @@ class SignupFormTest extends MailChimpTestCase {
   }
 
   public function testCanCreateSignupForm() {
-    $signupForm = self::$mailChimp->model(SignupForm::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $signupForm = $mailChimp->model(SignupForm::class, [
+      'list_id' => $audience->id,
       'header' => [
         'text' => 'Demo text'
       ],
