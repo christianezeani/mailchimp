@@ -10,8 +10,11 @@ use MailChimp\Response\WebhookListResponse;
 class WebhookTest extends MailChimpTestCase {
 
   public function testCanGetAllWebhooks() {
-    $webhook = self::$mailChimp->model(Webhook::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $webhook = $mailChimp->model(Webhook::class, [
+      'list_id' => $audience->id
     ]);
 
     $data = $webhook->all();
@@ -20,8 +23,11 @@ class WebhookTest extends MailChimpTestCase {
   }
 
   public function testCanCreateWebhook() {
-    $webhook = self::$mailChimp->model(Webhook::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $webhook = $mailChimp->model(Webhook::class, [
+      'list_id' => $audience->id,
       'url' => 'https://www.demo.com/webhook',
       'events' => ['subscribe' => true]
     ]);
@@ -37,9 +43,12 @@ class WebhookTest extends MailChimpTestCase {
    * @depends testCanCreateWebhook
    */
   public function testCanReadWebhook($webhook) {
-    $webhook = self::$mailChimp->model(Webhook::class, [
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $webhook = $mailChimp->model(Webhook::class, [
       'id' => $webhook->id,
-      'list_id' => MAILCHIMP_LIST_ID
+      'list_id' => $audience->id
     ]);
 
     $data = $webhook->read();

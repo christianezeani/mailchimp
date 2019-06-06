@@ -10,8 +10,11 @@ use MailChimp\Response\MergeFieldListResponse;
 class MergeFieldTest extends MailChimpTestCase {
 
   public function testCanGetAllMergeFields() {
-    $mergeField = self::$mailChimp->model(MergeField::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+    
+    $mergeField = $mailChimp->model(MergeField::class, [
+      'list_id' => $audience->id
     ]);
 
     $data = $mergeField->all();
@@ -20,8 +23,11 @@ class MergeFieldTest extends MailChimpTestCase {
   }
 
   public function testCanCreateMergeField() {
-    $mergeField = self::$mailChimp->model(MergeField::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $mergeField = $mailChimp->model(MergeField::class, [
+      'list_id' => $audience->id,
       'name' => 'FAVORITEJOKE',
       'type' => 'text'
     ]);
@@ -37,8 +43,11 @@ class MergeFieldTest extends MailChimpTestCase {
    * @depends testCanCreateMergeField
    */
   public function testCanReadMergeField($mergeField) {
-    $mergeField = self::$mailChimp->model(MergeField::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $mergeField = $mailChimp->model(MergeField::class, [
+      'list_id' => $audience->id,
       'merge_id' => $mergeField->merge_id
     ]);
 

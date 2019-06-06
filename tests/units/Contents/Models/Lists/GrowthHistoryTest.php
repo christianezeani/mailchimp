@@ -10,22 +10,16 @@ use MailChimp\Response\GrowthHistoryListResponse;
 
 class GrowthHistoryTest extends MailChimpTestCase {
 
-  public function mailChimpInstanceProvider() {
-    return [
-      'MailChimp Instance' => [$this->mailChimpInstance()]
-    ];
-  }
-
-  public function testCanBeCreated() {
+  public function testCanCreateInstance() {
     $this->assertInstanceOf(GrowthHistory::class, new GrowthHistory());
   }
 
-  /**
-   * @dataProvider mailChimpInstanceProvider
-   */
-  public function testCanGetHistories($mailChimp) {
+  public function testCanGetHistories() {
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
     $history = $mailChimp->model(GrowthHistory::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+      'list_id' => $audience->id
     ]);
 
     $data = $history->all();

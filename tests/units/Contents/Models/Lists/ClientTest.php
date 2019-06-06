@@ -10,22 +10,16 @@ use MailChimp\Response\ClientListResponse;
 
 class ClientTest extends MailChimpTestCase {
 
-  public function mailChimpInstanceProvider() {
-    return [
-      'MailChimp Instance' => [$this->mailChimpInstance()]
-    ];
-  }
-
-  public function testCanBeCreated() {
+  public function testCanCreateInstance() {
     $this->assertInstanceOf(Client::class, new Client());
   }
 
-  /**
-   * @dataProvider mailChimpInstanceProvider
-   */
-  public function testCanGetRecentClients($mailChimp) {
+  public function testCanGetRecentClients() {
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
     $client = $mailChimp->model(Client::class, [
-      'list_id' => MAILCHIMP_LIST_ID
+      'list_id' => $audience->id
     ]);
 
     $data = $client->get();

@@ -11,13 +11,16 @@ use MailChimp\Response\InterestCategoryListResponse;
 
 class InterestCategoryTest extends MailChimpTestCase {
 
-  public function testCanBeCreated() {
+  public function testCanCreateInstance() {
     $this->assertInstanceOf(InterestCategory::class, new InterestCategory());
   }
 
   public function testCanCreateCategory() {
-    $category = self::$mailChimp->model(InterestCategory::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $category = $mailChimp->model(InterestCategory::class, [
+      'list_id' => $audience->id,
       'title' => 'Test InterestCategory',
       'type' => 'checkboxes'
     ]);
@@ -56,8 +59,11 @@ class InterestCategoryTest extends MailChimpTestCase {
       return;
     }
 
-    $interest = self::$mailChimp->model(Interest::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $interest = $mailChimp->model(Interest::class, [
+      'list_id' => $audience->id,
       'category_id' => $category->id
     ]);
 
@@ -75,8 +81,11 @@ class InterestCategoryTest extends MailChimpTestCase {
       return;
     }
 
-    $interest = self::$mailChimp->model(Interest::class, [
-      'list_id' => MAILCHIMP_LIST_ID,
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $interest = $mailChimp->model(Interest::class, [
+      'list_id' => $audience->id,
       'category_id' => $category->id,
       'name' => 'Test Interest'
     ]);
@@ -103,8 +112,9 @@ class InterestCategoryTest extends MailChimpTestCase {
       return;
     }
 
-    $interest->name = 'Test Interest (Edited)';
-    $data = $interest->edit();
+    $data = $interest->edit([
+      'name' => 'Test Interest (Edited)'
+    ]);
 
     $this->assertInstanceOf(Interest::class, $data, self::getErrorDetails($data));
 
@@ -126,9 +136,12 @@ class InterestCategoryTest extends MailChimpTestCase {
       return;
     }
 
-    $interest = self::$mailChimp->model(Interest::class, [
+    $audience = $this->audience();
+    $mailChimp = $this->mailChimpInstance();
+
+    $interest = $mailChimp->model(Interest::class, [
       'id' => $interest->id,
-      'list_id' => MAILCHIMP_LIST_ID,
+      'list_id' => $audience->id,
       'category_id' => $category->id
     ]);
 
