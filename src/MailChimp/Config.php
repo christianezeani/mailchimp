@@ -10,7 +10,7 @@ class Config implements ConfigInterface {
   private $_endpoint;
   private $_key;
   
-  function __construct($key = NULL) {
+  function __construct($key) {
     if (!empty($key)) $this->setKey($key);
   }
 
@@ -26,6 +26,10 @@ class Config implements ConfigInterface {
   }
 
   public function setKey($key) {
+    if (empty($key)) {
+      throw new InvalidKeyException('Please provide a valid API key!');
+    }
+
     @list($misc, $dc) = explode('-', $key);
 
     if (empty($misc) || empty($dc)) {
