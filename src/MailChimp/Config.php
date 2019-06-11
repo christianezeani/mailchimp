@@ -26,7 +26,7 @@ class Config implements ConfigInterface {
   }
 
   public function setKey($key) {
-    if (empty($key)) {
+    if (is_null($key) || empty($key)) {
       throw new InvalidKeyException('Please provide a valid API key!');
     }
 
