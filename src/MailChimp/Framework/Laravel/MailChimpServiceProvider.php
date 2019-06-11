@@ -9,9 +9,14 @@ use Illuminate\Support\ServiceProvider;
 class MailChimpServiceProvider extends ServiceProvider {
   
   public function register() {
-    $config = new Config(env('MAILCHIMP_API_KEY'));
-    $mailChimp = new MailChimp($config);
-    $this->app->instance(MailChimp::class, $mailChimp);
+
+    $this->app->singleton(MailChimp::class, function ($app) {
+      $config = new Config(env('MAILCHIMP_API_KEY'));
+      return new MailChimp($config);
+    });
+
+    app(MailChimp::class);
+
   }
   
 }
