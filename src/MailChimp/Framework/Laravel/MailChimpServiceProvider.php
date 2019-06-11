@@ -20,8 +20,6 @@ class MailChimpServiceProvider extends ServiceProvider {
       $config = new Config($key);
       return new MailChimp($config);
     });
-
-    app(MailChimp::class);
   }
   
 }
