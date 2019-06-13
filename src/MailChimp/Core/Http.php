@@ -2,6 +2,7 @@
 namespace MailChimp\Core;
 
 use MailChimp\Response\ErrorResponse;
+use MailChimp\Exceptions\HttpException;
 use MailChimp\Exceptions\InvalidClassException;
 
 
@@ -139,8 +140,7 @@ class Http extends Core {
       return $response;
     } else {
       $response = $this->own(ErrorResponse::class, $response);
-      // print_r($response);
-      return $response;
+      throw new HttpException($response, $info['http_code']);
     }
   }
 
