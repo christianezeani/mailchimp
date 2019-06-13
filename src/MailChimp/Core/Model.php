@@ -216,11 +216,7 @@ class Model extends Data implements ModelInterface {
       return parent::__get($name);
     }
 
-    if (isset($this->data->{$name})) {
-      return $this->data->{$name};
-    }
-    
-    return NULL;
+    return $this->data->{$name};
   }
 
   /**
