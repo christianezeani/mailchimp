@@ -119,8 +119,7 @@ class Data extends Core implements JsonSerializable {
   /**
    * @ignore
    */
-  public function __get($name) {
-    if (!$this->__isset($name)) return NULL;
+  public function &__get($name) {
     return $this->data->{$name};
   }
 
