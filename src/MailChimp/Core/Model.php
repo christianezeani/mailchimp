@@ -211,7 +211,7 @@ class Model extends Data implements ModelInterface {
   /**
    * @ignore
    */
-  public function __get($name) {
+  public function &__get($name) {
     if (parent::hasField($name)) {
       return parent::__get($name);
     }
