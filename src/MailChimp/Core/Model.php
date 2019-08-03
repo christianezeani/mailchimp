@@ -173,7 +173,7 @@ class Model extends Data implements ModelInterface {
     $info = $this->getAction($action);
     if (!$info || !array_key_exists('fields', $info)) return NULL;
 
-    return $config['fields'];
+    return $info['fields'];
   }
 
   /**
