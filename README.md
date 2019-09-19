@@ -48,7 +48,7 @@ Alternatively, if you're not using Composer, load `/path/to/mailchimp/autoload.p
 
 ```php
 <?php
-require_once('/path/to/mailchimp/autoload.php');
+require_once '/path/to/mailchimp/autoload.php';
 ```
 
 ## A Simple Example
@@ -62,10 +62,10 @@ use MailChimp\Models\Lists\Audience;
 $config = new Config('_your_api_key_');
 $mailChimp = new MailChimp($config);
 
-$audience = $mailChimp->model(Audience::class);
+$audience = $mailChimp->audience();
 
-$audience = $audience->create([
-  'name' => 'MailChimp Test ',
+$audience->create([
+  'name' => 'MailChimp Test',
   'contact' => [
     'company' => 'Demo Company Inc.',
     'address1' => 'Just a demo address',

@@ -10,7 +10,7 @@ class Config implements ConfigInterface {
   private $_endpoint;
   private $_key;
   
-  function __construct($key) {
+  function __construct($key = NULL) {
     if (!empty($key)) $this->setKey($key);
   }
 
