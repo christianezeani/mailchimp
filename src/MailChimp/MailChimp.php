@@ -9,6 +9,7 @@ use MailChimp\Exceptions\InvalidModelException;
 use MailChimp\Core\Model;
 use MailChimp\Models\Lists\Audience;
 use MailChimp\Models\Templates\Template;
+use MailChimp\Models\Templates\TemplateFolder;
 
 /**
  * MailChimp Client
@@ -19,12 +20,15 @@ use MailChimp\Models\Templates\Template;
  * @method Template template(array $data = [])
  *  Manage your Mailchimp templates. A template is an HTML file used to create the layout and basic design for a campaign.
  * 
+ * @method TemplateFolder templateFolder(array $data = [])
+ *  Organize your templates using folders.
  */
 class MailChimp extends Core implements MailChimpInterface {
 
   const MODELS = [
     'audience' => Audience::class,
-    'template' => Template::class
+    'template' => Template::class,
+    'templateFolder' => TemplateFolder::class,
   ];
 
   function __construct(Config $config) {

@@ -4,6 +4,7 @@ namespace MailChimp\Models\Templates;
 use MailChimp\Core\Model;
 use MailChimp\Data\Link;
 use MailChimp\Response\TemplateListResponse;
+use MailChimp\Response\TemplateDefaultContentResponse;
 
 
 /**
@@ -55,20 +56,23 @@ use MailChimp\Response\TemplateListResponse;
  *  A list of link types and descriptions for the API schema documents.
  * 
  * 
- * @method Template create(string $data = [])
+ * @method Template create(array $data = [])
  *  Create a new template for the account. Only Classic templates are supported.
  * 
- * @method Template edit(string $data = [])
+ * @method Template edit(array $data = [])
  *  Update the name, HTML, or folder_id of an existing template.
  * 
  * @method Template delete()
  *  Delete a specific template.
  * 
- * @method Template all()
+ * @method Template all(array $params = [])
  *  Get a list of an account's available templates.
  * 
- * @method Template read()
+ * @method Template read(array $params = [])
  *  Get information about a specific template.
+ * 
+ * @method Template defaultContent(array $params = [])
+ *  Get the sections that you can edit in a template, including each section's default content.
  */
 class Template extends Model {
 
@@ -137,6 +141,13 @@ class Template extends Model {
       'method' => 'GET',
       'path' => '/{template_id}',
       'params' => ['template_id' => 'id']
+    ],
+
+    'defaultContent' => [
+      'method' => 'GET',
+      'path' => '/{template_id}/default-content',
+      'params' => ['template_id' => 'id'],
+      'responseType' => TemplateDefaultContentResponse::class
     ]
   ];
   
